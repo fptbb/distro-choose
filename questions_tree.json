@@ -145,8 +145,8 @@
         { "id": "georgism" },
         { "id": "social_georgism" },
         { "id": "flat_taxation" },
-        { "id": "Progressive_Taxation" },
-        { "id": "Confiscatory_Taxation" },
+        { "id": "progressive_taxation" },
+        { "id": "confiscatory_taxation" },
         { "id": "collective_distribution" }
     ],
     "culture": [
