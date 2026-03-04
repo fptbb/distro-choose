@@ -129,8 +129,8 @@
             "text": "How should the burden of productivity-based contributions be structured?", 
             "options": [ 
                 { "text": "A uniform percentage for all participants to maintain neutrality.", "next": "flat_taxation" }, 
-                { "text": "A progressive scale where contributions increase with economic capacity.", "next": "progressive_taxation" },
-                { "text": "Confiscatory rates on extreme wealth or inheritance to prevent economic dynasties.", "next": "confiscatory_taxation" }
+                { "text": "A progressive scale where contributions increase with economic capacity.", "next": "Progressive_Taxation" },
+                { "text": "Confiscatory rates on extreme wealth or inheritance to prevent economic dynasties.", "next": "Confiscatory_Taxation" }
             ] 
         },
         { 
@@ -145,8 +145,8 @@
         { "id": "georgism" },
         { "id": "social_georgism" },
         { "id": "flat_taxation" },
-        { "id": "progressive_taxation" },
-        { "id": "confiscatory_taxation" },
+        { "id": "Progressive_Taxation" },
+        { "id": "Confiscatory_Taxation" },
         { "id": "collective_distribution" }
     ],
     "culture": [
