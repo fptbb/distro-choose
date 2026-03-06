@@ -119,7 +119,7 @@
             "text": "What is the most legitimate mechanism for funding shared needs or managing common wealth?", 
             "options": [ 
                 { "text": "Levies on human productivity, such as income, profit, or trade.", "next": "r2.1" }, 
-                { "text": "A levy on the value of land and natural resources, leaving labor and capital untouched.", "next": "r2.2" },
+                { "text": "A levy on the value of land and natural resources, leaving labor and capital untouched.", "next": "lvt" },
                 { "text": "The abolition of the distinction between private and public wealth; all resources are managed collectively.", "next": "collective_distribution" },
                 { "text": "Strictly voluntary funding; no mandatory levies should exist.", "next": "Voluntaryism" }
             ] 
@@ -133,17 +133,8 @@
                 { "text": "Confiscatory rates on extreme wealth or inheritance to prevent economic dynasties.", "next": "Confiscatory_Taxation" }
             ] 
         },
-        { 
-            "id": "r2.2", 
-            "text": "What should be the primary use of the revenue generated from land/natural resource values?", 
-            "options": [ 
-                { "text": "To fund essential but minimal government functions as a replacement for all other taxes.", "next": "georgism" }, 
-                { "text": "To fund a social safety net or a universal 'Citizen's Dividend'.", "next": "social_georgism" }
-            ] 
-        },
         { "id": "Voluntaryism" },
-        { "id": "georgism" },
-        { "id": "social_georgism" },
+        { "id": "lvt" },
         { "id": "flat_taxation" },
         { "id": "Progressive_Taxation" },
         { "id": "Confiscatory_Taxation" },
