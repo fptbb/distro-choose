@@ -77,17 +77,46 @@
         const scoredLabels = Object.keys(labelMapping)
             .map(key => {
                 const requiredParts = key.split('|');
-                const score = requiredParts.filter(part => userResults.includes(part)).length;
-                return { key, label: labelMapping[key], score };
+                let score = 0;
+                let penalty = 0;
+
+                requiredParts.forEach(reqVal => {
+                    const category = Object.keys(resultsMapping).find(cat => resultsMapping[cat][reqVal]);
+                    const userVal = results[category];
+
+                    if (!userVal) return;
+
+                    const userGroup = Object.keys(subCategories[category] || {}).find(group => 
+                        subCategories[category][group].includes(userVal)
+                    );
+                    const reqGroup = Object.keys(subCategories[category] || {}).find(group => 
+                        subCategories[category][group].includes(reqVal)
+                    );
+
+                    if (userVal === reqVal) {
+                        score += 1.0;
+                    } 
+                    else if (userGroup && userGroup === reqGroup) {
+                        score += 0.5;
+                    }
+
+                    if (userGroup && reqGroup && incompatibleSubCategories[userGroup]?.includes(reqGroup)) {
+                        penalty = -100;
+                    }
+                });
+
+                return { key, label: labelMapping[key], score: score + penalty };
             })
             .sort((a, b) => b.score - a.score)
             .filter(item => item.key !== matchedKey);
 
-        if (scoredLabels.length > 0 && scoredLabels[0].score > 0) {
-            const bestSecondary = scoredLabels[0];
-            secondaryLabelDiv.innerText = "Next closest: " + bestSecondary.label;
-            secondaryLabelDiv.className = "label-bubble";
-            secondaryLabelDiv.style.backgroundColor = labelColors[bestSecondary.label] || "#7a7a7a";
+        if (scoredLabels.length > 0) {
+            const nextMatch = scoredLabels[0];
+            secondaryLabelDiv.innerText = `Next closest match: ${nextMatch.label}`;
+            secondaryLabelDiv.className = "label-bubble"; 
+            secondaryLabelDiv.style.display = "inline-block";
+            secondaryLabelDiv.style.borderColor = labelColors[nextMatch.label] || "#7a7a7a";
+            secondaryLabelDiv.style.color = labelColors[nextMatch.label] || "#7a7a7a";
         } else {
             secondaryLabelDiv.style.display = "none";
         }
