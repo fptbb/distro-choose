@@ -1,0 +1,84 @@
+[
+  {
+    "id": "phil_start",
+    "text": "How do you feel about proprietary software?",
+    "options": [
+      {
+        "text": "🤷 I don't care — whatever works best",
+        "next": "pragmatist"
+      },
+      {
+        "text": "⚖️ I prefer open source but use proprietary when needed",
+        "next": "phil_moderate"
+      },
+      {
+        "text": "🛡️ I strongly prefer FOSS and avoid proprietary",
+        "next": "phil_foss"
+      },
+      {
+        "text": "🕊️ I want zero proprietary software — freedom only",
+        "next": "foss_purist"
+      },
+      {
+        "text": "🚫 I specifically want to avoid systemd",
+        "next": "systemd_free"
+      }
+    ]
+  },
+  {
+    "id": "phil_moderate",
+    "text": "How strict is your preference?",
+    "options": [
+      {
+        "text": "🧘 Flexible — I just lean toward open source",
+        "next": "moderate"
+      },
+      {
+        "text": "🔍 I'd choose the open-source option when reasonably possible",
+        "next": "soft_libre"
+      }
+    ]
+  },
+  {
+    "id": "phil_foss",
+    "text": "How actively do you promote FOSS?",
+    "options": [
+      {
+        "text": "🌍 I try to use FOSS but accept reality",
+        "next": "libre_leaning"
+      },
+      {
+        "text": "📢 I advocate for FOSS and contribute to it",
+        "next": "foss_advocate"
+      }
+    ]
+  },
+  {
+    "id": "pragmatist",
+    "text": "Pragmatist"
+  },
+  {
+    "id": "moderate",
+    "text": "Moderate"
+  },
+  {
+    "id": "soft_libre",
+    "text": "Soft Libre"
+  },
+  {
+    "id": "libre_leaning",
+    "text": "Libre-Leaning"
+  },
+  {
+    "id": "foss_advocate",
+    "text": "FOSS Advocate"
+  },
+  {
+    "id": "foss_purist",
+    "text": "FOSS Purist"
+  },
+  {
+    "id": "systemd_free",
+    "text": "Systemd-Free"
+  }
+]

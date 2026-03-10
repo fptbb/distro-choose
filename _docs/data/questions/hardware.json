@@ -1,0 +1,84 @@
+[
+  {
+    "id": "hw_start",
+    "text": "What hardware will this run on?",
+    "options": [
+      {
+        "text": "🖥️ Modern PC (2018+)",
+        "next": "hw_modern"
+      },
+      {
+        "text": "💾 Older PC (pre-2015 or <4GB RAM)",
+        "next": "hw_old"
+      },
+      {
+        "text": "🍎 Apple Silicon Mac (M1/M2/M3/M4)",
+        "next": "apple_silicon"
+      },
+      {
+        "text": "🔌 Raspberry Pi / ARM SBC",
+        "next": "arm"
+      },
+      {
+        "text": "☁️ Virtual machine or cloud server",
+        "next": "virtual"
+      }
+    ]
+  },
+  {
+    "id": "hw_modern",
+    "text": "What GPU do you have?",
+    "options": [
+      {
+        "text": "🟩 NVIDIA discrete GPU",
+        "next": "modern_nvidia"
+      },
+      {
+        "text": "🟥 AMD / Intel (integrated or discrete)",
+        "next": "modern_standard"
+      }
+    ]
+  },
+  {
+    "id": "hw_old",
+    "text": "How limited is the hardware?",
+    "options": [
+      {
+        "text": "🟢 Usable — 2-4 GB RAM, decent CPU",
+        "next": "old_moderate"
+      },
+      {
+        "text": "🔴 Very old — <2 GB RAM, ancient CPU",
+        "next": "ultra_light"
+      }
+    ]
+  },
+  {
+    "id": "modern_nvidia",
+    "text": "Modern (NVIDIA)"
+  },
+  {
+    "id": "modern_standard",
+    "text": "Modern (AMD/Intel)"
+  },
+  {
+    "id": "old_moderate",
+    "text": "Older Hardware"
+  },
+  {
+    "id": "ultra_light",
+    "text": "Ultra-Lightweight"
+  },
+  {
+    "id": "apple_silicon",
+    "text": "Apple Silicon"
+  },
+  {
+    "id": "arm",
+    "text": "ARM / SBC"
+  },
+  {
+    "id": "virtual",
+    "text": "Virtual / Cloud"
+  }
+]

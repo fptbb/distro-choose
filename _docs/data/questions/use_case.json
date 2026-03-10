@@ -1,0 +1,228 @@
+[
+  {
+    "id": "use_start",
+    "text": "What will you primarily use this computer for?",
+    "options": [
+      {
+        "text": "🖥️ Everyday desktop (browsing, docs, email)",
+        "next": "desktop_type"
+      },
+      {
+        "text": "💻 Programming & development",
+        "next": "dev_type"
+      },
+      {
+        "text": "🎮 Gaming",
+        "next": "gaming_type"
+      },
+      {
+        "text": "🖧 Server or infrastructure",
+        "next": "server_type"
+      },
+      {
+        "text": "🎬 Audio / video / media production",
+        "next": "media_production"
+      },
+      {
+        "text": "🔒 Security or privacy",
+        "next": "security_type"
+      },
+      {
+        "text": "📚 Education or learning Linux",
+        "next": "education_type"
+      },
+      {
+        "text": "🔄 I want an unbreakable immutable desktop",
+        "next": "immutable_desktop"
+      }
+    ]
+  },
+  {
+    "id": "desktop_type",
+    "text": "What matters most for your desktop?",
+    "options": [
+      {
+        "text": "🛠️ Just works, nothing fancy",
+        "next": "desktop_simple"
+      },
+      {
+        "text": "🎨 Beautiful, polished, modern look",
+        "next": "desktop_polished"
+      },
+      {
+        "text": "🪶 Lightweight — my hardware is limited",
+        "next": "desktop_light"
+      }
+    ]
+  },
+  {
+    "id": "dev_type",
+    "text": "What kind of development?",
+    "options": [
+      {
+        "text": "🌐 Web / app / general programming",
+        "next": "dev_general"
+      },
+      {
+        "text": "☁️ DevOps, containers, cloud infrastructure",
+        "next": "dev_ops"
+      },
+      {
+        "text": "⚙️ Systems / kernel / embedded / low-level",
+        "next": "dev_systems"
+      }
+    ]
+  },
+  {
+    "id": "gaming_type",
+    "text": "What kind of gaming experience?",
+    "options": [
+      {
+        "text": "🎮 Easy — install Steam and play",
+        "next": "gaming_easy"
+      },
+      {
+        "text": "⚡ Maximum FPS — I want to tune everything",
+        "next": "gaming_performance"
+      },
+      {
+        "text": "📺 Console-like HTPC / Steam Deck style",
+        "next": "gaming_console"
+      }
+    ]
+  },
+  {
+    "id": "server_type",
+    "text": "What kind of server?",
+    "options": [
+      {
+        "text": "🏢 Enterprise / production (10+ year support)",
+        "next": "server_enterprise"
+      },
+      {
+        "text": "🏠 Home server / self-hosting",
+        "next": "server_home"
+      },
+      {
+        "text": "🐳 Containers & microservices (Docker/K8s)",
+        "next": "server_containers"
+      },
+      {
+        "text": "💾 NAS / file storage appliance",
+        "next": "nas_storage"
+      },
+      {
+        "text": "🔒 Router / firewall / network appliance",
+        "next": "network_appliance"
+      }
+    ]
+  },
+  {
+    "id": "security_type",
+    "text": "What's your security focus?",
+    "options": [
+      {
+        "text": "🗡️ Pentesting & offensive security",
+        "next": "security_offensive"
+      },
+      {
+        "text": "🕵️ Privacy, anonymity & anti-surveillance",
+        "next": "security_privacy"
+      }
+    ]
+  },
+  {
+    "id": "education_type",
+    "text": "What's your learning goal?",
+    "options": [
+      {
+        "text": "🎓 Classroom / educational software for students",
+        "next": "education"
+      },
+      {
+        "text": "🧠 I want to deeply learn how Linux works",
+        "next": "learning"
+      }
+    ]
+  },
+  {
+    "id": "desktop_simple",
+    "text": "Simple Desktop"
+  },
+  {
+    "id": "desktop_polished",
+    "text": "Polished Desktop"
+  },
+  {
+    "id": "desktop_light",
+    "text": "Lightweight Desktop"
+  },
+  {
+    "id": "dev_general",
+    "text": "General Development"
+  },
+  {
+    "id": "dev_ops",
+    "text": "DevOps / Cloud"
+  },
+  {
+    "id": "dev_systems",
+    "text": "Systems Development"
+  },
+  {
+    "id": "gaming_easy",
+    "text": "Easy Gaming"
+  },
+  {
+    "id": "gaming_performance",
+    "text": "Performance Gaming"
+  },
+  {
+    "id": "gaming_console",
+    "text": "Console-Style Gaming"
+  },
+  {
+    "id": "server_enterprise",
+    "text": "Enterprise Server"
+  },
+  {
+    "id": "server_home",
+    "text": "Home Server"
+  },
+  {
+    "id": "server_containers",
+    "text": "Containers & Microservices"
+  },
+  {
+    "id": "nas_storage",
+    "text": "NAS & Storage"
+  },
+  {
+    "id": "network_appliance",
+    "text": "Network / Firewall"
+  },
+  {
+    "id": "media_production",
+    "text": "Media Production"
+  },
+  {
+    "id": "security_offensive",
+    "text": "Pentesting"
+  },
+  {
+    "id": "security_privacy",
+    "text": "Privacy & Anonymity"
+  },
+  {
+    "id": "education",
+    "text": "Education"
+  },
+  {
+    "id": "learning",
+    "text": "Learning Linux"
+  },
+  {
+    "id": "immutable_desktop",
+    "text": "Immutable Desktop"
+  }
+]

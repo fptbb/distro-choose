@@ -1,0 +1,50 @@
+{
+  "categories": ["use_case", "experience", "philosophy", "customization", "hardware", "stability", "desktop_environment"],
+  "categoryTitles": {
+    "use_case": "Primary Use",
+    "experience": "Experience Level",
+    "philosophy": "Software Philosophy",
+    "customization": "Customization Level",
+    "hardware": "Hardware Target",
+    "stability": "Update Preference",
+    "desktop_environment": "Desktop Style"
+  },
+  "subCategories": {
+    "use_case": {
+      "desktop": ["desktop_simple", "desktop_polished", "desktop_light", "immutable_desktop"],
+      "development": ["dev_general", "dev_ops", "dev_systems"],
+      "gaming": ["gaming_easy", "gaming_performance", "gaming_console"],
+      "server": ["server_enterprise", "server_home", "server_containers", "nas_storage", "network_appliance"],
+      "specialist": ["media_production", "security_offensive", "security_privacy", "education", "learning"]
+    },
+    "experience": {
+      "newbie": ["beginner", "newcomer"],
+      "mid_level": ["intermediate", "competent"],
+      "power_user": ["advanced", "expert"]
+    },
+    "philosophy": {
+      "permissive": ["pragmatist", "moderate"],
+      "open_minded": ["soft_libre", "libre_leaning"],
+      "strict_foss": ["foss_advocate", "foss_purist", "systemd_free"]
+    },
+    "customization": {
+      "easy_setup": ["preconfigured", "curated", "immutable"],
+      "middle_ground": ["moderate_custom", "tweaker"],
+      "full_control": ["diy", "from_scratch", "declarative"]
+    },
+    "hardware": {
+      "modern": ["modern_nvidia", "modern_standard", "apple_silicon"],
+      "constrained": ["old_moderate", "ultra_light"],
+      "special": ["arm", "virtual"]
+    },
+    "stability": {
+      "latest": ["bleeding_edge", "rolling_tested"],
+      "stable": ["regular_release", "lts", "set_and_forget", "enterprise_stable"]
+    },
+    "desktop_environment": {
+      "full_de": ["de_full_modern", "de_full_traditional"],
+      "light_de": ["de_lightweight", "de_minimal"],
+      "tiling_or_none": ["de_tiling", "de_none"]
+    }
+  }
+}

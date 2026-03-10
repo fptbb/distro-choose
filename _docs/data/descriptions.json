@@ -1,0 +1,396 @@
+{
+  "use_case": {
+    "desktop_simple": {
+      "title": "Simple Desktop",
+      "summary": "You want a computer for everyday tasks — browsing, email, documents, and light media.",
+      "detail": "A simple desktop setup prioritizes ease of use and reliability. It should work out of the box, with a familiar interface, automatic updates, and minimal maintenance. Distros in this category ship with a web browser, office suite, media player, and file manager pre-installed.",
+      "good_for": ["Web browsing and email", "Office documents and spreadsheets", "Video streaming and light media", "Social media and communication"],
+      "look_for": ["Pre-installed apps", "Graphical package manager", "Automatic driver setup", "Beginner-friendly documentation"]
+    },
+    "desktop_polished": {
+      "title": "Polished Desktop",
+      "summary": "You value visual design, smooth animations, and a premium feel in your desktop experience.",
+      "detail": "A polished desktop goes beyond functional — it should look and feel modern, with attention to typography, animations, blur effects, and consistent theming. These distros invest heavily in a curated user experience, often rivaling macOS or Windows in visual quality.",
+      "good_for": ["Users coming from macOS who value aesthetics", "Professionals who want a beautiful work environment", "Daily use where you spend hours at the screen"],
+      "look_for": ["Modern GNOME, KDE, or custom DEs", "Consistent icon and color themes", "Smooth transitions and animations", "HiDPI/Retina support"]
+    },
+    "desktop_light": {
+      "title": "Lightweight Desktop",
+      "summary": "You need an OS that runs well on older or resource-constrained hardware.",
+      "detail": "Lightweight distros are designed to breathe new life into aging hardware. They use minimal desktop environments (Xfce, LXQt, IceWM) that run on as little as 512 MB to 2 GB of RAM, while still providing a usable graphical interface for basic tasks.",
+      "good_for": ["Reviving old laptops and PCs", "Low-power devices and netbooks", "Running alongside resource-heavy apps", "Machines with 1-4 GB RAM"],
+      "look_for": ["Low RAM and CPU usage", "Xfce, LXQt, or MATE desktops", "Fast boot times", "Efficient package management"]
+    },
+    "dev_general": {
+      "title": "General Development",
+      "summary": "You program web apps, mobile apps, or general-purpose software.",
+      "detail": "A development workstation needs fresh compiler and interpreter versions, good IDE support, containerization tools (Docker, Podman), and access to a large package repository. Rolling or semi-rolling distros are popular here because they provide up-to-date toolchains.",
+      "good_for": ["Web development (Node, Python, Ruby, PHP)", "Mobile app development", "Database and API work", "IDE-heavy workflows (VS Code, JetBrains)"],
+      "look_for": ["Up-to-date packages", "Good Docker/Podman support", "Large repository of dev tools", "Flatpak or Snap for IDE sandboxing"]
+    },
+    "dev_ops": {
+      "title": "DevOps / Cloud",
+      "summary": "You work with containers, CI/CD pipelines, infrastructure-as-code, and cloud deployments.",
+      "detail": "DevOps workflows require reproducible environments, strong container tooling, and often declarative system configuration. NixOS excels here with its fully reproducible builds. Fedora and openSUSE offer fresh toolchains with enterprise-grade stability.",
+      "good_for": ["Kubernetes and Docker orchestration", "Terraform and Ansible workflows", "CI/CD pipeline management", "Cloud infrastructure (AWS, GCP, Azure)"],
+      "look_for": ["Declarative or reproducible configuration", "First-class container runtime support", "SSH and remote management tools", "Matching your production server OS"]
+    },
+    "dev_systems": {
+      "title": "Systems Development",
+      "summary": "You work on kernels, compilers, embedded firmware, or low-level systems programming.",
+      "detail": "Systems programming requires access to kernel headers, cross-compilation toolchains, debugging tools (gdb, perf, strace), and often the ability to build and test custom kernels. Source-based or rolling distros work well because they provide the latest development headers.",
+      "good_for": ["Kernel module development", "Embedded and firmware programming", "Compiler and toolchain work", "Operating system research"],
+      "look_for": ["Easy kernel compilation", "Cross-compilation toolchains", "Access to kernel source and headers", "AUR or source-based builds"]
+    },
+    "gaming_easy": {
+      "title": "Easy Gaming",
+      "summary": "You want to install Steam and play games with minimal setup.",
+      "detail": "Easy gaming distros come with GPU drivers pre-configured, Steam pre-installed or one-click-installable, and Proton/Wine ready for Windows game compatibility. The goal is zero-friction: plug in a controller, launch Steam, and play.",
+      "good_for": ["Steam library gaming", "Proton-compatible Windows games", "Controller support out of the box", "Casual gaming alongside daily use"],
+      "look_for": ["Pre-installed GPU drivers", "Steam/Lutris one-click install", "32-bit library support", "Good Proton/Wine compatibility"]
+    },
+    "gaming_performance": {
+      "title": "Performance Gaming",
+      "summary": "You want maximum FPS and are willing to tweak kernel schedulers, GPU settings, and system optimizations.",
+      "detail": "Performance gaming distros ship with custom kernels (zen, cachyos, TKG), CPU schedulers (BORE, EEVDF), and GPU driver optimizations. They often include tools like MangoHud, gamemode, and custom compositors to minimize latency and maximize frame rates.",
+      "good_for": ["Competitive gaming needing low latency", "Benchmarking and overclocking", "VR gaming", "Streaming while gaming"],
+      "look_for": ["Custom gaming kernels", "CPU scheduler optimizations", "Pre-configured MangoHud/gamemode", "Latest Mesa/NVIDIA drivers"]
+    },
+    "gaming_console": {
+      "title": "Console-Style Gaming",
+      "summary": "You want a couch/TV gaming experience like a Steam Deck or game console.",
+      "detail": "Console-style distros boot directly into a big-picture gaming interface, optimized for controllers and TV displays. SteamOS and Bazzite provide this experience with immutable, unbreakable bases that update atomically.",
+      "good_for": ["Living room HTPC setups", "Steam Deck-like experiences on PC", "Controller-first gaming", "Kids and family gaming stations"],
+      "look_for": ["Gamescope compositor", "Auto-boot to gaming UI", "Controller profile management", "Immutable base for stability"]
+    },
+    "server_enterprise": {
+      "title": "Enterprise Server",
+      "summary": "You need a server with 10+ year support, certifications, and commercial backing.",
+      "detail": "Enterprise servers run mission-critical workloads where stability, security patches, and long-term support are non-negotiable. RHEL, Rocky Linux, and AlmaLinux provide 10-year support cycles with backported security fixes and no disruptive feature changes.",
+      "good_for": ["Production web servers", "Database servers (PostgreSQL, MySQL)", "Compliance-regulated environments", "Large-scale deployments"],
+      "look_for": ["10-year support lifecycle", "SELinux and security certifications", "RHEL binary compatibility", "Commercial support options"]
+    },
+    "server_home": {
+      "title": "Home Server",
+      "summary": "You want to self-host services like media, file sharing, backups, or home automation.",
+      "detail": "A home server runs 24/7 with minimal maintenance. It should be easy to install Docker containers, set up file shares (SMB/NFS), run media servers (Plex, Jellyfin), and manage backups. Debian and Ubuntu Server are popular choices for their stability and documentation.",
+      "good_for": ["Plex/Jellyfin media server", "File sharing and backups", "Home automation (Home Assistant)", "Pi-hole DNS ad blocking"],
+      "look_for": ["Long-term stable base", "Good Docker documentation", "Low resource usage", "Remote management (SSH, web UI)"]
+    },
+    "server_containers": {
+      "title": "Containers & Microservices",
+      "summary": "You run containerized workloads with Docker, Podman, or Kubernetes.",
+      "detail": "Container-focused platforms need a minimal, secure host OS that runs container runtimes efficiently. Alpine Linux is the de facto standard for Docker container images due to its tiny size. For the host OS, Fedora CoreOS, Debian, and Ubuntu Server are popular choices.",
+      "good_for": ["Docker and Podman hosting", "Kubernetes clusters", "Microservice architectures", "CI/CD build runners"],
+      "look_for": ["Minimal attack surface", "Containerd/CRI-O support", "Fast boot time", "Automated security updates"]
+    },
+    "nas_storage": {
+      "title": "NAS & Storage",
+      "summary": "You want a network-attached storage appliance for file sharing and data management.",
+      "detail": "NAS distros provide a web interface for managing storage pools, RAID arrays, file shares, and backups. TrueNAS SCALE offers enterprise ZFS support, while OpenMediaVault is simpler and runs well on Raspberry Pi hardware.",
+      "good_for": ["Centralized family file storage", "Time Machine and Windows backups", "Media library hosting", "RAID and ZFS data protection"],
+      "look_for": ["ZFS or Btrfs support", "Web-based management UI", "SMB/NFS/iSCSI protocols", "Docker container support"]
+    },
+    "network_appliance": {
+      "title": "Network / Firewall",
+      "summary": "You need a router, firewall, or custom network appliance OS.",
+      "detail": "Network appliance distros like OpenWrt replace the firmware on consumer routers with a full Linux stack, enabling advanced routing, firewalling, VPN servers, QoS, and network monitoring. They run on minimal hardware.",
+      "good_for": ["Custom home routers", "VPN gateways", "Network segmentation and VLANs", "Wi-Fi access point management"],
+      "look_for": ["Hardware compatibility list", "LuCI web interface", "Firewall (nftables/iptables)", "WireGuard/OpenVPN built-in"]
+    },
+    "media_production": {
+      "title": "Media Production",
+      "summary": "You create audio, video, or visual content and need a low-latency, creative-tool-ready OS.",
+      "detail": "Media production distros ship with real-time or low-latency kernels for audio work (JACK, PipeWire), video editing (Kdenlive, DaVinci Resolve), and visual arts (GIMP, Blender, Inkscape). They optimize for consistent performance under heavy loads.",
+      "good_for": ["Music production and recording", "Video editing and compositing", "3D modeling and animation", "Graphic design and illustration"],
+      "look_for": ["RT or low-latency kernel", "JACK/PipeWire audio stack", "Pre-installed creative apps", "Good GPU driver support"]
+    },
+    "security_offensive": {
+      "title": "Pentesting",
+      "summary": "You perform penetration testing, security auditing, or vulnerability research.",
+      "detail": "Offensive security distros come pre-loaded with hundreds of tools for network scanning, exploitation, password cracking, wireless attacks, and forensics. Kali Linux and Parrot OS are the industry standards, used by security professionals and in certifications.",
+      "good_for": ["Penetration testing engagements", "Bug bounty hunting", "Security certifications (OSCP, CEH)", "Capture The Flag competitions"],
+      "look_for": ["Pre-installed security tool suites", "Regular tool updates", "VM and live USB friendly", "Good documentation and training"]
+    },
+    "security_privacy": {
+      "title": "Privacy & Anonymity",
+      "summary": "You need an OS designed to protect your identity and communications.",
+      "detail": "Privacy-focused distros route all traffic through Tor, use encrypted storage, and minimize data persistence. Tails is amnesic (erases everything on shutdown), while Whonix uses VM isolation to prevent IP leaks. Qubes OS compartmentalizes everything in separate VMs.",
+      "good_for": ["Journalism in hostile environments", "Whistleblower communications", "Anonymous browsing", "Protecting against surveillance"],
+      "look_for": ["Tor integration", "Full-disk encryption", "Amnesic or compartmentalized design", "Minimal data persistence"]
+    },
+    "education": {
+      "title": "Education",
+      "summary": "You need an OS for classroom use with educational software for students.",
+      "detail": "Education-focused distros ship with age-appropriate software, classroom management tools, and parental controls. They're designed for school labs, young learners, and educational institutions that need a managed, safe computing environment.",
+      "good_for": ["School computer labs", "Young students (K-12)", "Teaching programming basics", "STEM education tools"],
+      "look_for": ["Pre-installed educational apps", "Classroom management tools", "Child-safe browsing", "Easy deployment across many PCs"]
+    },
+    "learning": {
+      "title": "Learning Linux",
+      "summary": "You want to deeply understand how Linux works by building and configuring from scratch.",
+      "detail": "Learning distros force you to understand each component of the system — the boot process, init system, package management, kernel, and shell. Arch Linux, Gentoo, and Slackware are popular choices because they require hands-on configuration of every layer.",
+      "good_for": ["Understanding Linux internals", "Preparing for Linux certifications", "Building sysadmin skills", "Becoming self-sufficient with troubleshooting"],
+      "look_for": ["Manual installation process", "Excellent documentation (Arch Wiki)", "Minimal pre-configuration", "Active community forums"]
+    },
+    "immutable_desktop": {
+      "title": "Immutable Desktop",
+      "summary": "You want an unbreakable desktop with atomic updates and guaranteed rollback.",
+      "detail": "Immutable desktops use read-only root filesystems where the OS image is updated atomically. If an update breaks something, you can instantly roll back to the previous state. Apps run in Flatpak or container isolation. Fedora Silverblue and Vanilla OS pioneer this approach.",
+      "good_for": ["Users tired of system breakage", "Shared family computers", "Workstations that must stay reliable", "Developers using containers"],
+      "look_for": ["rpm-ostree or similar atomic updates", "Flatpak as primary app format", "Automatic rollback on failure", "Distrobox for legacy apps"]
+    }
+  },
+  "experience": {
+    "beginner": {
+      "title": "Beginner",
+      "summary": "You've never used Linux and have no command-line experience.",
+      "detail": "As a beginner, you need a distro that works entirely through graphical interfaces. Everything — installing apps, managing files, configuring Wi-Fi, printing — should be doable without ever opening a terminal.",
+      "look_for": ["Graphical app store", "Automatic hardware detection", "GUI for all settings", "Large community for help"]
+    },
+    "newcomer": {
+      "title": "Newcomer",
+      "summary": "You have basic tech skills and maybe some command-line exposure.",
+      "detail": "As a newcomer, you're comfortable following step-by-step guides and aren't afraid of the terminal, but you don't want to rely on it for daily tasks. A good newcomer distro provides GUIs for common tasks while teaching you terminal skills gradually.",
+      "look_for": ["GUI tools with terminal alternatives", "Good 'getting started' guides", "Active forums and community", "Familiar desktop layout"]
+    },
+    "intermediate": {
+      "title": "Intermediate",
+      "summary": "You can follow guides and use the terminal for basic tasks.",
+      "detail": "At the intermediate level, you can install packages from the command line, edit config files, and troubleshoot basic issues using search engines and forums. You want a distro that respects your growing skills without overwhelming you.",
+      "look_for": ["Balanced GUI and CLI tools", "Good documentation", "Access to newer packages", "Customization options"]
+    },
+    "competent": {
+      "title": "Competent",
+      "summary": "You're comfortable with package managers, services, and system configuration.",
+      "detail": "Competent users can manage systemd services, configure network settings, set up SSH servers, and debug most issues independently. You want a distro that gives you more control and doesn't hide complexity behind abstraction layers.",
+      "look_for": ["Advanced package management", "System service control", "Network configuration tools", "Access to bleeding-edge or rolling repos"]
+    },
+    "advanced": {
+      "title": "Advanced",
+      "summary": "You configure complex setups, manage services, and compile software from source.",
+      "detail": "Advanced users have installed Arch, managed servers, written shell scripts, and compiled custom kernels. You want maximum control and minimal hand-holding. DIY distros like Arch, Void, and NixOS give you the building blocks.",
+      "look_for": ["Minimal base install", "Rolling release for latest software", "AUR or equivalent", "Comprehensive wiki documentation"]
+    },
+    "expert": {
+      "title": "Expert",
+      "summary": "You've built Linux From Scratch, patched kernels, or built custom distros.",
+      "detail": "At the expert level, you understand the full Linux stack from bootloader to userspace. Gentoo's USE flags, NixOS's declarative model, and Slackware's simplicity appeal to you. You choose distros as tools, not as environments.",
+      "look_for": ["Source-based compilation", "Full system reproducibility", "Custom kernel options", "Control over every package and dependency"]
+    }
+  },
+  "philosophy": {
+    "pragmatist": {
+      "title": "Pragmatist",
+      "summary": "You use whatever works best — open source or proprietary.",
+      "detail": "Pragmatists don't have ideological preferences about software licenses. If NVIDIA's proprietary driver gives better performance, use it. If Chrome works better than Firefox for your workflow, use it. The tool serves the task.",
+      "look_for": ["Easy proprietary driver installation", "Snap/Flatpak for commercial apps", "Broad hardware support", "No philosophical restrictions"]
+    },
+    "moderate": {
+      "title": "Moderate",
+      "summary": "You lean toward open source but use proprietary software when it's clearly better.",
+      "detail": "Moderates prefer FOSS defaults but don't avoid proprietary tools when they solve real problems. You might use Firefox over Chrome, LibreOffice over MS Office, but still install Steam or use NVIDIA drivers without guilt.",
+      "look_for": ["FOSS defaults with proprietary options", "Balanced approach to drivers", "Community-driven with pragmatic policies"]
+    },
+    "soft_libre": {
+      "title": "Soft Libre",
+      "summary": "You seek out open-source alternatives and choose the FOSS option when reasonably possible.",
+      "detail": "Soft Libre users actively research FOSS alternatives before reaching for proprietary tools. You'd use GIMP instead of Photoshop, KDE instead of macOS, and PipeWire instead of proprietary audio. But you're not dogmatic about it.",
+      "look_for": ["Strong FOSS-first package selection", "Fedora-style firmware handling", "Community governance", "Upstream contributions"]
+    },
+    "libre_leaning": {
+      "title": "Libre-Leaning",
+      "summary": "You try to use FOSS whenever possible and actively avoid proprietary tools.",
+      "detail": "Libre-leaning users make deliberate choices to minimize proprietary dependencies. You might use a different graphics card to avoid NVIDIA's proprietary driver, or choose Debian's main repo over contrib/non-free.",
+      "look_for": ["Clear libre/non-libre repository separation", "Strong community governance", "Commitment to upstream FOSS projects"]
+    },
+    "foss_advocate": {
+      "title": "FOSS Advocate",
+      "summary": "You advocate for software freedom and contribute to open-source projects.",
+      "detail": "FOSS advocates see software freedom as a social good. You contribute to open-source projects, prefer copyleft licenses, and choose distros that align with these values. Fedora, Debian, and openSUSE reflect this ethos.",
+      "look_for": ["Strong FOSS governance and community", "Copyleft licensing preferences", "Contributor-friendly workflows", "Transparent decision-making"]
+    },
+    "foss_purist": {
+      "title": "FOSS Purist",
+      "summary": "You refuse all proprietary software, including firmware and drivers.",
+      "detail": "FOSS purists follow the Free Software Foundation's standards. Only fully libre distros like Trisquel (FSF-endorsed) qualify. This means no proprietary firmware, no binary blobs, and potentially reduced hardware support — a trade-off for absolute software freedom.",
+      "look_for": ["FSF endorsement", "Linux-libre kernel (no binary blobs)", "Zero proprietary packages", "Full source availability"]
+    },
+    "systemd_free": {
+      "title": "Systemd-Free",
+      "summary": "You specifically want to avoid systemd as your init system.",
+      "detail": "Some users dislike systemd's scope (it handles init, logging, networking, DNS, timers, and more). Alternatives include OpenRC (Alpine, Artix, Gentoo), runit (Void Linux, Artix), s6, and dinit. Devuan offers the Debian ecosystem without systemd.",
+      "look_for": ["OpenRC, runit, s6, or dinit init system", "Modular system components", "Unix philosophy adherence", "Active anti-systemd community"]
+    }
+  },
+  "customization": {
+    "preconfigured": {
+      "title": "Preconfigured",
+      "summary": "Everything is set up out of the box — sensible defaults, no tweaking.",
+      "detail": "Preconfigured distros ship with well-chosen defaults so you can be productive immediately. The desktop, apps, themes, and settings are ready to use. You trade customization depth for immediate usability.",
+      "look_for": ["Complete app suite pre-installed", "Consistent default theme", "Working out of the box", "Minimal post-install setup"]
+    },
+    "curated": {
+      "title": "Curated",
+      "summary": "A thoughtfully designed experience — opinionated choices that produce a polished result.",
+      "detail": "Curated distros like elementary OS and Zorin OS make strong design decisions to create a cohesive experience. Instead of offering every option, they choose the best option and polish it. Think Apple's approach applied to Linux.",
+      "look_for": ["Opinionated design language", "Custom-built applications", "Consistent visual identity", "Fewer settings, more defaults"]
+    },
+    "moderate_custom": {
+      "title": "Moderate Customization",
+      "summary": "Settings panels, config file tweaks, and theme changes — you like adjusting things.",
+      "detail": "Moderate customizers use GUI settings panels and occasionally edit config files. KDE Plasma is ideal here: thousands of settings, but all accessible through graphical tools. You can change workflows without touching the terminal.",
+      "look_for": ["Rich settings GUI", "Theme and appearance controls", "Widget and panel customization", "Extension or plugin ecosystems"]
+    },
+    "tweaker": {
+      "title": "Tweaker",
+      "summary": "You want to modify kernel parameters, manage services, and tune everything to perfection.",
+      "detail": "Tweakers go beyond settings panels into sysctl parameters, systemd unit files, filesystem tuning, and boot configuration. Arch and openSUSE Tumbleweed provide the rolling packages and deep access this requires.",
+      "look_for": ["Recent kernels with tuning options", "Access to system internals", "Comprehensive wiki for advanced topics", "AUR or OBS for custom packages"]
+    },
+    "diy": {
+      "title": "DIY",
+      "summary": "You want to choose every component and assemble your system from a minimal base.",
+      "detail": "DIY distros give you a minimal base (just a kernel, shell, and package manager) and let you build up. You choose the init system, display server, window manager, shell, and every application. Arch Linux is the gold standard.",
+      "look_for": ["Minimal base install", "Choose-your-own-DE approach", "Package-level control", "Manual configuration"]
+    },
+    "from_scratch": {
+      "title": "From Scratch",
+      "summary": "You compile the entire system from source code, optimized for your specific hardware.",
+      "detail": "Source-based distros like Gentoo compile every package from source with USE flags that let you include or exclude specific features. This produces a system perfectly tailored to your hardware, but requires significant compilation time.",
+      "look_for": ["Source-based package management", "USE flags or build options", "Cross-compilation support", "Hardware-specific optimizations"]
+    },
+    "declarative": {
+      "title": "Declarative",
+      "summary": "You define your entire system in a configuration file — fully reproducible.",
+      "detail": "NixOS pioneered the declarative approach: your entire system (packages, services, users, networking) is described in a single configuration.nix file. Any machine with this file produces an identical system. This is revolutionary for DevOps and reproducibility.",
+      "look_for": ["System defined in config files", "Atomic upgrades and rollback", "Multiple package versions coexisting", "Reproducible builds"]
+    },
+    "immutable": {
+      "title": "Immutable / Atomic",
+      "summary": "A locked-down root filesystem with automatic, rollback-capable updates.",
+      "detail": "Immutable systems use read-only root partitions updated atomically. SteamOS, Fedora Silverblue, Bazzite, and Vanilla OS use this model. Apps install via Flatpak or containers. The system itself cannot be accidentally broken.",
+      "look_for": ["Read-only root filesystem", "Atomic update mechanism", "Flatpak as primary app format", "Automatic rollback on failure"]
+    }
+  },
+  "hardware": {
+    "modern_nvidia": {
+      "title": "Modern (NVIDIA)",
+      "summary": "A modern PC with a discrete NVIDIA graphics card.",
+      "detail": "NVIDIA on Linux requires proprietary drivers for best performance. Some distros (Pop!_OS, Manjaro, Garuda) ship with NVIDIA drivers pre-installed. Others (Fedora) require manual setup via RPMFusion. The experience varies significantly across distros.",
+      "look_for": ["Pre-installed NVIDIA driver ISO", "Easy driver installation", "Wayland + NVIDIA support", "CUDA toolkit availability"]
+    },
+    "modern_standard": {
+      "title": "Modern (AMD/Intel)",
+      "summary": "A modern PC with AMD or Intel graphics (integrated or discrete).",
+      "detail": "AMD and Intel GPUs use open-source Mesa drivers built into the kernel. They just work on virtually every Linux distro without any proprietary driver installation. This is the easiest hardware path to Linux.",
+      "look_for": ["Latest kernel for newest GPU support", "Recent Mesa version", "Wayland support", "Hardware video acceleration"]
+    },
+    "old_moderate": {
+      "title": "Older Hardware",
+      "summary": "A PC from pre-2015 or with 2-4 GB RAM.",
+      "detail": "Older hardware needs lightweight distros that don't demand modern GPU features or lots of RAM. Xfce, LXQt, and MATE desktops work well. Distros like MX Linux, Xubuntu, and antiX are specifically designed for this use case.",
+      "look_for": ["Xfce, LXQt, or MATE desktop", "Low idle RAM usage (<500 MB)", "32-bit support (if applicable)", "Good legacy hardware driver support"]
+    },
+    "ultra_light": {
+      "title": "Ultra-Lightweight",
+      "summary": "Very old hardware with less than 2 GB RAM or an ancient CPU.",
+      "detail": "Ultra-lightweight distros like Puppy Linux, antiX, and Tiny Core can run on machines with 256 MB to 1 GB RAM. They often load entirely into RAM, use window managers instead of desktop environments, and sacrifice modern features for speed.",
+      "look_for": ["Under 256 MB RAM usage", "Runs from RAM entirely", "IceWM, JWM, or Fluxbox", "32-bit support"]
+    },
+    "apple_silicon": {
+      "title": "Apple Silicon",
+      "summary": "An Apple Mac with M1, M2, M3, or M4 chip.",
+      "detail": "Apple Silicon Macs require the Asahi Linux project's reverse-engineered drivers. Support has matured significantly — GPU acceleration, Wi-Fi, Bluetooth, and audio all work. Based on Fedora, it's currently the only way to run Linux natively on modern Macs.",
+      "look_for": ["Asahi Linux project support", "GPU acceleration status", "Wi-Fi and Bluetooth support", "Battery life optimization"]
+    },
+    "arm": {
+      "title": "ARM / SBC",
+      "summary": "Raspberry Pi or other ARM-based single-board computer.",
+      "detail": "ARM SBCs (Raspberry Pi, Pine64, ODROID) need distros compiled for ARM architecture. Raspberry Pi OS is the standard for Pis. Many distros (Debian, Ubuntu, Fedora) also offer ARM images. Package availability may be more limited than x86.",
+      "look_for": ["ARM image availability", "GPIO library support", "Headless server capability", "SD card and eMMC boot support"]
+    },
+    "virtual": {
+      "title": "Virtual / Cloud",
+      "summary": "Running inside a virtual machine or cloud instance.",
+      "detail": "VMs and cloud instances don't need hardware drivers — they use paravirtualized devices. Focus on minimal footprint, fast boot, and good cloud-init support. Alpine, Debian, and Ubuntu are the most popular choices for cloud deployments.",
+      "look_for": ["Small image size", "Fast boot time", "Cloud-init support", "Paravirtualized driver support"]
+    }
+  },
+  "stability": {
+    "bleeding_edge": {
+      "title": "Bleeding Edge",
+      "summary": "Always the newest versions — you accept the risk of occasional breakage.",
+      "detail": "Bleeding-edge distros push updates as soon as upstream projects release them, often with minimal testing. You get the latest features and security fixes immediately, but updates can occasionally break things. Arch Linux and its derivatives are the archetype.",
+      "look_for": ["Same-day upstream releases", "Active community for quick fixes", "Rollback capability (BTRFS snapshots)", "Tolerance for occasional breakage"]
+    },
+    "rolling_tested": {
+      "title": "Rolling (Tested)",
+      "summary": "Continuous updates, but held back a few days/weeks for testing.",
+      "detail": "Tested rolling distros delay updates for quality assurance. Manjaro holds Arch packages for 1-2 weeks. openSUSE Tumbleweed runs every snapshot through openQA automated testing. You get fresh software with fewer surprises.",
+      "look_for": ["Automated test pipelines", "Staged update process", "Rollback support", "Community testing feedback"]
+    },
+    "regular_release": {
+      "title": "Regular Release",
+      "summary": "New versions every 6-12 months, with upgrade paths between releases.",
+      "detail": "Fixed-release distros (Fedora, Ubuntu) ship a new version every 6-12 months. Each release is a tested snapshot. You upgrade when ready, getting new features and packages in batches rather than continuously.",
+      "look_for": ["Predictable release schedule", "Supported upgrade path", "Beta/RC testing periods", "6-9 month support per release"]
+    },
+    "lts": {
+      "title": "Long-Term Support",
+      "summary": "Security patches for 3-5 years on a stable base — no feature churn.",
+      "detail": "LTS releases receive security-only updates with no risky feature changes. Ubuntu LTS (5 years), Debian Stable (3 years + 2 LTS), and Linux Mint follow this model. Ideal for workstations and servers that need reliability over freshness.",
+      "look_for": ["3-5 year support window", "Security-only backports", "No breaking changes", "Stable ABI for third-party software"]
+    },
+    "set_and_forget": {
+      "title": "Set & Forget",
+      "summary": "Install once, apply auto-updates, never think about it again.",
+      "detail": "Set-and-forget systems need automatic unattended updates, robust error recovery, and minimal maintenance. NAS platforms (TrueNAS, OpenMediaVault) and immutable desktops (Silverblue, Bazzite) excel here because they update atomically.",
+      "look_for": ["Unattended security updates", "Automatic rollback on failure", "Minimal maintenance required", "Web-based remote management"]
+    },
+    "enterprise_stable": {
+      "title": "Enterprise Stable",
+      "summary": "10-year certified support with backported security fixes. Rock-solid reliability.",
+      "detail": "Enterprise distros (RHEL, Rocky, Alma) provide a decade of support with rigorous testing, CVE patching, and ABI stability. They're certified for enterprise hardware and software. Packages are older but proven in production.",
+      "look_for": ["10-year support lifecycle", "CVE response SLA", "Hardware and software certifications", "FIPS and security compliance"]
+    }
+  },
+  "desktop_environment": {
+    "de_full_modern": {
+      "title": "Full Modern DE",
+      "summary": "GNOME-style desktop with activities overview, gestures, and Wayland.",
+      "detail": "Modern DEs (GNOME, Pantheon, Budgie) use activity-based workflows — an overview of all windows, virtual desktops, and app search. They prioritize clean design, Wayland support, touchpad gestures, and minimal visual clutter. Similar to macOS in philosophy.",
+      "look_for": ["Activities/overview mode", "Touchpad gesture support", "Wayland by default", "GNOME extensions ecosystem"]
+    },
+    "de_full_traditional": {
+      "title": "Full Traditional DE",
+      "summary": "Windows-like desktop with taskbar, start menu, and system tray.",
+      "detail": "Traditional DEs (KDE Plasma, Cinnamon, MATE) use a panel-at-bottom layout with a start menu, taskbar/dock, system tray, and desktop icons. Familiar to Windows users. KDE Plasma is the most customizable DE in Linux.",
+      "look_for": ["Taskbar and start menu", "System tray and notifications", "Extensive customization (KDE)", "Widget and panel system"]
+    },
+    "de_lightweight": {
+      "title": "Lightweight DE",
+      "summary": "A functional desktop that uses minimal RAM — Xfce, LXQt, or MATE.",
+      "detail": "Lightweight DEs provide a full desktop experience (panels, file manager, settings) while using 300-600 MB RAM idle. Xfce is the most popular, LXQt is the lightest with a Qt-based interface, and MATE continues the GNOME 2 legacy.",
+      "look_for": ["Under 600 MB RAM idle", "Full panel and file manager", "Settings GUI", "HiDPI support (varies)"]
+    },
+    "de_tiling": {
+      "title": "Tiling WM",
+      "summary": "Keyboard-driven window management — windows automatically tile without overlapping.",
+      "detail": "Tiling WMs (Hyprland, Sway, i3, dwm) arrange windows in non-overlapping tiles across virtual desktops. Navigation is entirely keyboard-driven. Once mastered, they're extremely productive for code-heavy workflows. Steep learning curve.",
+      "look_for": ["Hyprland (Wayland) or i3 (X11)", "Extensive keybinding configuration", "Status bar (waybar, polybar)", "Community dotfile repositories"]
+    },
+    "de_minimal": {
+      "title": "Minimal WM",
+      "summary": "A basic floating window manager — you build the rest of the environment yourself.",
+      "detail": "Minimal WMs (Openbox, IceWM, Fluxbox) provide window drawing and basic management. There's no panel, no file manager, no settings app by default — you add each component yourself. Ideal for learning or extreme customization.",
+      "look_for": ["Under 200 MB RAM idle", "Right-click desktop menu", "Manual panel/bar setup", "rc.xml or similar config files"]
+    },
+    "de_none": {
+      "title": "No GUI (Headless)",
+      "summary": "Terminal only — for servers, containers, and command-line enthusiasts.",
+      "detail": "Headless installations have no graphical interface. All management happens via SSH, terminal, or web UI. This is standard for servers, containers, NAS appliances, and network devices. Saves all resources for the actual workload.",
+      "look_for": ["SSH server pre-configured", "Web management UI (if applicable)", "tmux or screen for session management", "Low resource usage"]
+    }
+  }
+}

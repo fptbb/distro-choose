@@ -1,0 +1,327 @@
+[
+  {
+    "name": "Fedora Workstation",
+    "family": "RPM-Based",
+    "de": "GNOME",
+    "website": "https://fedoraproject.org",
+    "color": "#51A2DA",
+    "description": "Red Hat's community distro and RHEL proving ground. Ships the latest GNOME, cutting-edge kernels, and Wayland by default. Ideal for developers wanting fresh software on a stable base.",
+    "scores": {
+      "use_case": {
+        "dev_general": 1.0,
+        "dev_ops": 0.7,
+        "desktop_polished": 0.8,
+        "desktop_simple": 0.5,
+        "media_production": 0.4,
+        "dev_systems": 0.5
+      },
+      "experience": {
+        "intermediate": 1.0,
+        "competent": 0.9,
+        "advanced": 0.7,
+        "newcomer": 0.4
+      },
+      "philosophy": {
+        "soft_libre": 1.0,
+        "libre_leaning": 0.7,
+        "moderate": 0.6,
+        "foss_advocate": 0.5
+      },
+      "customization": {
+        "moderate_custom": 1.0,
+        "tweaker": 0.6,
+        "curated": 0.5
+      },
+      "hardware": {
+        "modern_standard": 1.0,
+        "modern_nvidia": 0.5,
+        "virtual": 0.7
+      },
+      "stability": {
+        "regular_release": 1.0,
+        "rolling_tested": 0.4,
+        "lts": 0.2
+      },
+      "desktop_environment": {
+        "de_full_modern": 1.0,
+        "de_full_traditional": 0.3
+      }
+    },
+    "year_created": 2003,
+    "based_on": "Independent"
+  },
+  {
+    "name": "Fedora Silverblue",
+    "family": "RPM-Based",
+    "de": "GNOME",
+    "website": "https://fedoraproject.org/silverblue",
+    "color": "#3C6EB4",
+    "description": "Immutable variant of Fedora using rpm-ostree. The root filesystem is read-only; apps run in Flatpak or Toolbox containers. Atomic updates with automatic rollback on failure.",
+    "scores": {
+      "use_case": {
+        "immutable_desktop": 1.0,
+        "desktop_polished": 0.7,
+        "dev_ops": 0.6,
+        "dev_general": 0.5
+      },
+      "experience": {
+        "intermediate": 0.7,
+        "competent": 1.0,
+        "advanced": 0.8
+      },
+      "philosophy": {
+        "soft_libre": 0.9,
+        "foss_advocate": 0.6,
+        "moderate": 0.5
+      },
+      "customization": {
+        "immutable": 1.0,
+        "curated": 0.6
+      },
+      "hardware": {
+        "modern_standard": 1.0,
+        "virtual": 0.6
+      },
+      "stability": {
+        "regular_release": 0.8,
+        "set_and_forget": 0.8,
+        "rolling_tested": 0.4
+      },
+      "desktop_environment": {
+        "de_full_modern": 1.0
+      }
+    },
+    "year_created": 2018,
+    "based_on": "Fedora Workstation"
+  },
+  {
+    "name": "Nobara Linux",
+    "family": "RPM-Based",
+    "de": "GNOME / KDE Plasma",
+    "website": "https://nobaraproject.org",
+    "color": "#D4463B",
+    "description": "Gaming-optimized Fedora fork by a Proton-GE developer. Includes custom kernel patches, CPU schedulers, and pre-configured NVIDIA drivers for maximum gaming performance.",
+    "scores": {
+      "use_case": {
+        "gaming_performance": 1.0,
+        "gaming_easy": 0.9,
+        "media_production": 0.6,
+        "desktop_polished": 0.5
+      },
+      "experience": {
+        "intermediate": 1.0,
+        "competent": 0.8,
+        "newcomer": 0.4,
+        "advanced": 0.5
+      },
+      "philosophy": {
+        "pragmatist": 1.0,
+        "moderate": 0.5
+      },
+      "customization": {
+        "moderate_custom": 0.8,
+        "tweaker": 0.7,
+        "preconfigured": 0.6
+      },
+      "hardware": {
+        "modern_nvidia": 1.0,
+        "modern_standard": 0.8
+      },
+      "stability": {
+        "regular_release": 0.9,
+        "rolling_tested": 0.5,
+        "bleeding_edge": 0.3
+      },
+      "desktop_environment": {
+        "de_full_modern": 0.8,
+        "de_full_traditional": 0.7
+      }
+    },
+    "year_created": 2022,
+    "based_on": "Fedora Workstation"
+  },
+  {
+    "name": "Rocky Linux",
+    "family": "RPM-Based",
+    "de": "None (Server)",
+    "website": "https://rockylinux.org",
+    "color": "#10B981",
+    "description": "Community-driven RHEL rebuild. 1:1 binary compatible with RHEL, providing 10-year enterprise support for free. Created to replace CentOS as the go-to free enterprise server OS.",
+    "scores": {
+      "use_case": {
+        "server_enterprise": 1.0,
+        "server_home": 0.6,
+        "server_containers": 0.7,
+        "dev_ops": 0.6
+      },
+      "experience": {
+        "competent": 0.8,
+        "advanced": 1.0,
+        "expert": 0.8
+      },
+      "philosophy": {
+        "soft_libre": 0.7,
+        "libre_leaning": 0.6,
+        "pragmatist": 0.5
+      },
+      "customization": {
+        "moderate_custom": 0.7,
+        "tweaker": 0.5
+      },
+      "hardware": {
+        "virtual": 1.0,
+        "modern_standard": 0.8
+      },
+      "stability": {
+        "enterprise_stable": 1.0,
+        "set_and_forget": 0.8,
+        "lts": 0.7
+      },
+      "desktop_environment": {
+        "de_none": 1.0,
+        "de_full_modern": 0.2
+      }
+    },
+    "year_created": 2021,
+    "based_on": "Fedora Workstation"
+  },
+  {
+    "name": "AlmaLinux",
+    "family": "RPM-Based",
+    "de": "None (Server)",
+    "website": "https://almalinux.org",
+    "color": "#0F4880",
+    "description": "Another RHEL-compatible rebuild, backed by CloudLinux. ABI-compatible with RHEL for enterprise deployments. Strong cloud and hosting provider adoption.",
+    "scores": {
+      "use_case": {
+        "server_enterprise": 1.0,
+        "server_containers": 0.7,
+        "dev_ops": 0.5,
+        "server_home": 0.5
+      },
+      "experience": {
+        "competent": 0.7,
+        "advanced": 1.0,
+        "expert": 0.8
+      },
+      "philosophy": {
+        "soft_libre": 0.7,
+        "libre_leaning": 0.6,
+        "pragmatist": 0.5
+      },
+      "customization": {
+        "moderate_custom": 0.6,
+        "tweaker": 0.5
+      },
+      "hardware": {
+        "virtual": 1.0,
+        "modern_standard": 0.8
+      },
+      "stability": {
+        "enterprise_stable": 1.0,
+        "set_and_forget": 0.8,
+        "lts": 0.7
+      },
+      "desktop_environment": {
+        "de_none": 1.0
+      }
+    },
+    "year_created": 2021,
+    "based_on": "Fedora Workstation"
+  },
+  {
+    "name": "openSUSE Tumbleweed",
+    "family": "RPM-Based",
+    "de": "KDE Plasma",
+    "website": "https://get.opensuse.org/tumbleweed",
+    "color": "#73BA25",
+    "description": "Pure rolling-release distro with automated openQA testing for every snapshot. Offers YaST \u2014 the most powerful graphical system configuration tool in Linux. Strong KDE integration.",
+    "scores": {
+      "use_case": {
+        "dev_general": 0.9,
+        "dev_ops": 0.7,
+        "desktop_polished": 0.8,
+        "dev_systems": 0.5
+      },
+      "experience": {
+        "competent": 1.0,
+        "advanced": 0.9,
+        "intermediate": 0.6,
+        "expert": 0.6
+      },
+      "philosophy": {
+        "soft_libre": 1.0,
+        "libre_leaning": 0.6,
+        "moderate": 0.5
+      },
+      "customization": {
+        "moderate_custom": 0.9,
+        "tweaker": 0.8,
+        "curated": 0.4
+      },
+      "hardware": {
+        "modern_standard": 1.0,
+        "modern_nvidia": 0.5,
+        "virtual": 0.6
+      },
+      "stability": {
+        "rolling_tested": 1.0,
+        "bleeding_edge": 0.5
+      },
+      "desktop_environment": {
+        "de_full_traditional": 1.0,
+        "de_full_modern": 0.6
+      }
+    },
+    "year_created": 2014,
+    "based_on": "Independent"
+  },
+  {
+    "name": "openSUSE Leap",
+    "family": "RPM-Based",
+    "de": "KDE Plasma",
+    "website": "https://get.opensuse.org/leap",
+    "color": "#73BA25",
+    "description": "Fixed-release counterpart to Tumbleweed, sharing code with SUSE Linux Enterprise. Excellent for workstations and home servers needing stability with YaST management.",
+    "scores": {
+      "use_case": {
+        "server_home": 0.9,
+        "dev_general": 0.7,
+        "desktop_polished": 0.6,
+        "desktop_simple": 0.5
+      },
+      "experience": {
+        "competent": 1.0,
+        "advanced": 0.7,
+        "intermediate": 0.6
+      },
+      "philosophy": {
+        "soft_libre": 0.9,
+        "libre_leaning": 0.5,
+        "moderate": 0.6
+      },
+      "customization": {
+        "moderate_custom": 0.9,
+        "curated": 0.5,
+        "tweaker": 0.5
+      },
+      "hardware": {
+        "modern_standard": 0.9,
+        "virtual": 0.7,
+        "old_moderate": 0.4
+      },
+      "stability": {
+        "lts": 1.0,
+        "set_and_forget": 0.7,
+        "enterprise_stable": 0.5
+      },
+      "desktop_environment": {
+        "de_full_traditional": 1.0,
+        "de_full_modern": 0.5,
+        "de_none": 0.4
+      }
+    },
+    "year_created": 2015,
+    "based_on": "openSUSE Tumbleweed"
+  }
+]

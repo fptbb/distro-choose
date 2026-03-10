@@ -1,0 +1,56 @@
+[
+  {
+    "id": "de_start",
+    "text": "What kind of graphical interface do you prefer?",
+    "options": [
+      {
+        "text": "🖥️ Full desktop with activities/overview (like macOS/GNOME)",
+        "next": "de_full_modern"
+      },
+      {
+        "text": "📋 Traditional desktop with taskbar & start menu (like Windows)",
+        "next": "de_full_traditional"
+      },
+      {
+        "text": "🪶 Lightweight — functional but low on resources",
+        "next": "de_lightweight"
+      },
+      {
+        "text": "📐 Tiling window manager — keyboard-driven, no wasted space",
+        "next": "de_tiling"
+      },
+      {
+        "text": "⚙️ Minimal — just a window manager, I'll set up the rest",
+        "next": "de_minimal"
+      },
+      {
+        "text": "🖧 No GUI needed — headless/server only",
+        "next": "de_none"
+      }
+    ]
+  },
+  {
+    "id": "de_full_modern",
+    "text": "Full Modern DE"
+  },
+  {
+    "id": "de_full_traditional",
+    "text": "Full Traditional DE"
+  },
+  {
+    "id": "de_lightweight",
+    "text": "Lightweight DE"
+  },
+  {
+    "id": "de_tiling",
+    "text": "Tiling WM"
+  },
+  {
+    "id": "de_minimal",
+    "text": "Minimal WM"
+  },
+  {
+    "id": "de_none",
+    "text": "No GUI (Headless)"
+  }
+]

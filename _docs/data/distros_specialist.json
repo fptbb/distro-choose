@@ -1,0 +1,851 @@
+[
+  {
+    "name": "Kali Linux",
+    "family": "Specialist",
+    "de": "Xfce",
+    "website": "https://kali.org",
+    "color": "#367BF0",
+    "description": "The industry standard for penetration testing and security auditing. Packed with hundreds of offensive security tools. Maintained by Offensive Security. Not for daily desktop use.",
+    "scores": {
+      "use_case": {
+        "security_offensive": 1.0,
+        "learning": 0.3
+      },
+      "experience": {
+        "competent": 0.8,
+        "advanced": 1.0,
+        "expert": 0.9
+      },
+      "philosophy": {
+        "pragmatist": 0.8,
+        "soft_libre": 0.5
+      },
+      "customization": {
+        "preconfigured": 0.8,
+        "moderate_custom": 0.5
+      },
+      "hardware": {
+        "modern_standard": 0.8,
+        "virtual": 0.9
+      },
+      "stability": {
+        "rolling_tested": 0.8,
+        "regular_release": 0.5
+      },
+      "desktop_environment": {
+        "de_lightweight": 0.8,
+        "de_full_modern": 0.3
+      }
+    },
+    "year_created": 2013,
+    "based_on": "Debian"
+  },
+  {
+    "name": "Parrot OS",
+    "family": "Specialist",
+    "de": "MATE",
+    "website": "https://parrotsec.org",
+    "color": "#2FC0A2",
+    "description": "Debian-based security distro. Offers both a Security edition (pentesting) and a Home edition (privacy desktop). More desktop-friendly than Kali with cloud pentesting focus.",
+    "scores": {
+      "use_case": {
+        "security_offensive": 0.9,
+        "security_privacy": 0.7,
+        "dev_general": 0.3
+      },
+      "experience": {
+        "competent": 0.9,
+        "advanced": 0.8,
+        "intermediate": 0.4
+      },
+      "philosophy": {
+        "pragmatist": 0.7,
+        "soft_libre": 0.6,
+        "foss_advocate": 0.4
+      },
+      "customization": {
+        "preconfigured": 0.7,
+        "moderate_custom": 0.6
+      },
+      "hardware": {
+        "modern_standard": 0.8,
+        "virtual": 0.8,
+        "old_moderate": 0.4
+      },
+      "stability": {
+        "rolling_tested": 0.7,
+        "regular_release": 0.6
+      },
+      "desktop_environment": {
+        "de_lightweight": 0.7,
+        "de_full_traditional": 0.5
+      }
+    },
+    "year_created": 2013,
+    "based_on": "Debian"
+  },
+  {
+    "name": "Tails",
+    "family": "Specialist",
+    "de": "GNOME",
+    "website": "https://tails.net",
+    "color": "#56347C",
+    "description": "The Amnesic Incognito Live System. Boots from USB, routes everything through Tor, wipes all data on shutdown. Used by journalists and activists under surveillance. Ephemeral by design.",
+    "scores": {
+      "use_case": {
+        "security_privacy": 1.0
+      },
+      "experience": {
+        "competent": 0.8,
+        "advanced": 0.7,
+        "intermediate": 0.5
+      },
+      "philosophy": {
+        "foss_purist": 0.8,
+        "foss_advocate": 0.9,
+        "libre_leaning": 0.7
+      },
+      "customization": {
+        "preconfigured": 1.0
+      },
+      "hardware": {
+        "modern_standard": 0.7,
+        "old_moderate": 0.5
+      },
+      "stability": {
+        "regular_release": 0.8,
+        "set_and_forget": 0.5
+      },
+      "desktop_environment": {
+        "de_full_modern": 0.6
+      }
+    },
+    "year_created": 2009,
+    "based_on": "Debian"
+  },
+  {
+    "name": "Qubes OS",
+    "family": "Specialist",
+    "de": "Xfce (Dom0)",
+    "website": "https://qubes-os.org",
+    "color": "#3874D8",
+    "description": "Security-by-compartmentalization OS using Xen hypervisor. Every app runs in an isolated VM. Endorsed by Edward Snowden. The most secure desktop OS available \u2014 at the cost of complexity and RAM.",
+    "scores": {
+      "use_case": {
+        "security_privacy": 1.0,
+        "security_offensive": 0.4
+      },
+      "experience": {
+        "expert": 1.0,
+        "advanced": 0.7
+      },
+      "philosophy": {
+        "foss_advocate": 1.0,
+        "foss_purist": 0.7,
+        "libre_leaning": 0.6
+      },
+      "customization": {
+        "preconfigured": 0.6,
+        "tweaker": 0.5
+      },
+      "hardware": {
+        "modern_standard": 0.8
+      },
+      "stability": {
+        "regular_release": 0.8,
+        "lts": 0.5
+      },
+      "desktop_environment": {
+        "de_lightweight": 0.8
+      }
+    },
+    "year_created": 2012,
+    "based_on": "Fedora Workstation"
+  },
+  {
+    "name": "Ubuntu Studio",
+    "family": "Specialist",
+    "de": "KDE Plasma",
+    "website": "https://ubuntustudio.org",
+    "color": "#0078D7",
+    "description": "Ubuntu configured for content creators. Ships with a low-latency kernel, JACK audio, Ardour, Kdenlive, GIMP, and Blender pre-installed. Real-time audio production ready out of box.",
+    "scores": {
+      "use_case": {
+        "media_production": 1.0,
+        "desktop_polished": 0.4
+      },
+      "experience": {
+        "intermediate": 0.8,
+        "competent": 0.9,
+        "beginner": 0.4
+      },
+      "philosophy": {
+        "pragmatist": 0.8,
+        "moderate": 0.6,
+        "soft_libre": 0.5
+      },
+      "customization": {
+        "preconfigured": 1.0,
+        "moderate_custom": 0.5
+      },
+      "hardware": {
+        "modern_standard": 0.9,
+        "modern_nvidia": 0.7
+      },
+      "stability": {
+        "lts": 0.9,
+        "regular_release": 0.6
+      },
+      "desktop_environment": {
+        "de_full_traditional": 0.9,
+        "de_full_modern": 0.4
+      }
+    },
+    "year_created": 2008,
+    "based_on": "Ubuntu"
+  },
+  {
+    "name": "Bazzite",
+    "family": "Specialist",
+    "de": "GNOME / KDE Plasma",
+    "website": "https://bazzite.gg",
+    "color": "#8B5CF6",
+    "description": "Immutable, gaming-focused Fedora variant using rpm-ostree. Pre-configured for Steam, Lutris, and gaming. Available in desktop and HTPC/Steam Deck modes. Atomic updates prevent breakage.",
+    "scores": {
+      "use_case": {
+        "gaming_console": 1.0,
+        "gaming_easy": 0.9,
+        "gaming_performance": 0.8,
+        "immutable_desktop": 0.7
+      },
+      "experience": {
+        "beginner": 0.7,
+        "newcomer": 0.6,
+        "intermediate": 0.8,
+        "competent": 0.6
+      },
+      "philosophy": {
+        "pragmatist": 1.0
+      },
+      "customization": {
+        "immutable": 1.0,
+        "preconfigured": 0.8,
+        "curated": 0.6
+      },
+      "hardware": {
+        "modern_nvidia": 0.9,
+        "modern_standard": 1.0
+      },
+      "stability": {
+        "rolling_tested": 0.8,
+        "set_and_forget": 0.7
+      },
+      "desktop_environment": {
+        "de_full_modern": 0.7,
+        "de_full_traditional": 0.7
+      }
+    },
+    "year_created": 2023,
+    "based_on": "Fedora Silverblue"
+  },
+  {
+    "name": "Puppy Linux",
+    "family": "Specialist",
+    "de": "JWM",
+    "website": "https://puppylinux-woof-ce.github.io",
+    "color": "#98C8E8",
+    "description": "Ultra-lightweight distro that loads entirely into RAM. Can run on machines from the early 2000s with 256 MB RAM. Boots from USB/CD. Unique save-file persistence model.",
+    "scores": {
+      "use_case": {
+        "desktop_light": 1.0,
+        "education": 0.4,
+        "learning": 0.3
+      },
+      "experience": {
+        "intermediate": 0.6,
+        "competent": 0.7,
+        "advanced": 0.5
+      },
+      "philosophy": {
+        "pragmatist": 0.7,
+        "systemd_free": 0.6,
+        "moderate": 0.5
+      },
+      "customization": {
+        "preconfigured": 0.7,
+        "moderate_custom": 0.5
+      },
+      "hardware": {
+        "ultra_light": 1.0,
+        "old_moderate": 0.9,
+        "arm": 0.4
+      },
+      "stability": {
+        "set_and_forget": 0.7,
+        "lts": 0.5
+      },
+      "desktop_environment": {
+        "de_minimal": 1.0,
+        "de_lightweight": 0.6
+      }
+    },
+    "year_created": 2003,
+    "based_on": "Independent"
+  },
+  {
+    "name": "antiX",
+    "family": "Specialist",
+    "de": "IceWM",
+    "website": "https://antixlinux.com",
+    "color": "#FFA500",
+    "description": "Systemd-free, ultra-lightweight Debian derivative. Can resurrect hardware from 2004. Uses IceWM window manager and sysvinit/runit. Ideal for ancient PCs with 256 MB RAM.",
+    "scores": {
+      "use_case": {
+        "desktop_light": 1.0
+      },
+      "experience": {
+        "intermediate": 0.7,
+        "competent": 0.8,
+        "advanced": 0.5
+      },
+      "philosophy": {
+        "systemd_free": 1.0,
+        "libre_leaning": 0.6,
+        "foss_advocate": 0.5
+      },
+      "customization": {
+        "moderate_custom": 0.7,
+        "diy": 0.4
+      },
+      "hardware": {
+        "ultra_light": 1.0,
+        "old_moderate": 0.9
+      },
+      "stability": {
+        "set_and_forget": 0.8,
+        "lts": 0.7
+      },
+      "desktop_environment": {
+        "de_minimal": 1.0,
+        "de_lightweight": 0.5
+      }
+    },
+    "year_created": 2007,
+    "based_on": "Debian"
+  },
+  {
+    "name": "Devuan",
+    "family": "Specialist",
+    "de": "Xfce",
+    "website": "https://www.devuan.org",
+    "color": "#3B4252",
+    "description": "Debian without systemd \u2014 a fork created by developers opposed to systemd's scope creep. Uses sysvinit or OpenRC. All the Debian ecosystem without the init system controversy.",
+    "scores": {
+      "use_case": {
+        "server_home": 0.7,
+        "desktop_light": 0.6,
+        "dev_systems": 0.5,
+        "learning": 0.4,
+        "desktop_simple": 0.4
+      },
+      "experience": {
+        "advanced": 1.0,
+        "expert": 0.8,
+        "competent": 0.5
+      },
+      "philosophy": {
+        "systemd_free": 1.0,
+        "libre_leaning": 0.8,
+        "foss_advocate": 0.7
+      },
+      "customization": {
+        "tweaker": 0.8,
+        "diy": 0.7,
+        "moderate_custom": 0.5
+      },
+      "hardware": {
+        "modern_standard": 0.7,
+        "old_moderate": 0.8,
+        "virtual": 0.6,
+        "ultra_light": 0.4
+      },
+      "stability": {
+        "lts": 0.8,
+        "enterprise_stable": 0.6,
+        "set_and_forget": 0.5
+      },
+      "desktop_environment": {
+        "de_lightweight": 0.8,
+        "de_minimal": 0.6,
+        "de_none": 0.6
+      }
+    },
+    "year_created": 2017,
+    "based_on": "Debian"
+  },
+  {
+    "name": "Raspberry Pi OS",
+    "family": "Specialist",
+    "de": "Pixel (LXDE)",
+    "website": "https://www.raspberrypi.com/software",
+    "color": "#C51A4A",
+    "description": "The official OS for Raspberry Pi SBCs. Debian-based, optimized for ARM. Pre-configured with GPIO libraries, Python, and education tools. The go-to for Raspberry Pi projects.",
+    "scores": {
+      "use_case": {
+        "education": 1.0,
+        "server_home": 0.5,
+        "learning": 0.6,
+        "desktop_light": 0.4,
+        "network_appliance": 0.4
+      },
+      "experience": {
+        "beginner": 0.8,
+        "newcomer": 0.7,
+        "intermediate": 0.6
+      },
+      "philosophy": {
+        "pragmatist": 0.8,
+        "moderate": 0.6,
+        "soft_libre": 0.4
+      },
+      "customization": {
+        "preconfigured": 0.9,
+        "moderate_custom": 0.5
+      },
+      "hardware": {
+        "arm": 1.0
+      },
+      "stability": {
+        "lts": 0.8,
+        "set_and_forget": 0.7,
+        "regular_release": 0.5
+      },
+      "desktop_environment": {
+        "de_lightweight": 1.0,
+        "de_none": 0.5
+      }
+    },
+    "year_created": 2012,
+    "based_on": "Debian"
+  },
+  {
+    "name": "TrueNAS SCALE",
+    "family": "Specialist",
+    "de": "Web UI",
+    "website": "https://www.truenas.com/truenas-scale",
+    "color": "#0095D5",
+    "description": "Enterprise-grade open-source NAS platform. Linux-based (Debian) with ZFS, Docker, and VM support via web interface. The standard for home and business network storage.",
+    "scores": {
+      "use_case": {
+        "nas_storage": 1.0,
+        "server_home": 0.7,
+        "server_containers": 0.5
+      },
+      "experience": {
+        "intermediate": 0.7,
+        "competent": 0.9,
+        "advanced": 0.7
+      },
+      "philosophy": {
+        "pragmatist": 0.7,
+        "soft_libre": 0.6
+      },
+      "customization": {
+        "preconfigured": 0.8,
+        "curated": 0.7
+      },
+      "hardware": {
+        "modern_standard": 0.8,
+        "virtual": 0.5
+      },
+      "stability": {
+        "set_and_forget": 1.0,
+        "lts": 0.8
+      },
+      "desktop_environment": {
+        "de_none": 1.0
+      }
+    },
+    "year_created": 2020,
+    "based_on": "Debian"
+  },
+  {
+    "name": "OpenMediaVault",
+    "family": "Specialist",
+    "de": "Web UI",
+    "website": "https://www.openmediavault.org",
+    "color": "#5DACDF",
+    "description": "Lightweight Debian-based NAS solution. Simpler than TrueNAS, ideal for Raspberry Pi or repurposed hardware. Plugin-based, manages Docker, SMB, NFS shares via web UI.",
+    "scores": {
+      "use_case": {
+        "nas_storage": 1.0,
+        "server_home": 0.8
+      },
+      "experience": {
+        "intermediate": 0.8,
+        "competent": 0.7,
+        "beginner": 0.4
+      },
+      "philosophy": {
+        "pragmatist": 0.7,
+        "soft_libre": 0.5
+      },
+      "customization": {
+        "preconfigured": 0.9,
+        "curated": 0.6
+      },
+      "hardware": {
+        "arm": 0.8,
+        "old_moderate": 0.7,
+        "modern_standard": 0.6
+      },
+      "stability": {
+        "set_and_forget": 1.0,
+        "lts": 0.7
+      },
+      "desktop_environment": {
+        "de_none": 1.0
+      }
+    },
+    "year_created": 2009,
+    "based_on": "Debian"
+  },
+  {
+    "name": "Proxmox VE",
+    "family": "Specialist",
+    "de": "Web UI",
+    "website": "https://www.proxmox.com",
+    "color": "#E57000",
+    "description": "Enterprise virtualization platform based on Debian. Manages KVM VMs and LXC containers via web interface. Free with optional paid support. The open-source alternative to VMware ESXi.",
+    "scores": {
+      "use_case": {
+        "server_enterprise": 0.8,
+        "server_home": 0.9,
+        "server_containers": 0.9,
+        "dev_ops": 0.6
+      },
+      "experience": {
+        "competent": 0.8,
+        "advanced": 1.0,
+        "expert": 0.7
+      },
+      "philosophy": {
+        "pragmatist": 0.7,
+        "soft_libre": 0.6
+      },
+      "customization": {
+        "moderate_custom": 0.7,
+        "preconfigured": 0.6
+      },
+      "hardware": {
+        "modern_standard": 0.9,
+        "virtual": 0.5
+      },
+      "stability": {
+        "enterprise_stable": 0.8,
+        "lts": 0.8,
+        "set_and_forget": 0.6
+      },
+      "desktop_environment": {
+        "de_none": 1.0
+      }
+    },
+    "year_created": 2008,
+    "based_on": "Debian"
+  },
+  {
+    "name": "Trisquel",
+    "family": "Specialist",
+    "de": "MATE",
+    "website": "https://trisquel.info",
+    "color": "#3F48CC",
+    "description": "FSF-endorsed, 100% free/libre Ubuntu derivative. Ships zero proprietary software, firmware, or drivers. For users who demand absolute software freedom, even at the cost of hardware support.",
+    "scores": {
+      "use_case": {
+        "desktop_simple": 0.7,
+        "education": 0.5,
+        "learning": 0.4
+      },
+      "experience": {
+        "intermediate": 0.6,
+        "competent": 0.7,
+        "advanced": 0.5
+      },
+      "philosophy": {
+        "foss_purist": 1.0,
+        "foss_advocate": 0.9,
+        "libre_leaning": 0.7
+      },
+      "customization": {
+        "preconfigured": 0.7,
+        "moderate_custom": 0.4
+      },
+      "hardware": {
+        "modern_standard": 0.4,
+        "old_moderate": 0.6
+      },
+      "stability": {
+        "lts": 0.9,
+        "set_and_forget": 0.6
+      },
+      "desktop_environment": {
+        "de_full_traditional": 0.7,
+        "de_lightweight": 0.5
+      }
+    },
+    "year_created": 2004,
+    "based_on": "Ubuntu"
+  },
+  {
+    "name": "Edubuntu",
+    "family": "Specialist",
+    "de": "GNOME",
+    "website": "https://edubuntu.org",
+    "color": "#DF6C28",
+    "description": "Ubuntu flavored for education. Ships with educational software, classroom management tools, and a child-friendly interface. Ideal for schools and learning environments.",
+    "scores": {
+      "use_case": {
+        "education": 1.0,
+        "desktop_simple": 0.5
+      },
+      "experience": {
+        "beginner": 0.9,
+        "newcomer": 0.8
+      },
+      "philosophy": {
+        "pragmatist": 0.7,
+        "moderate": 0.6,
+        "soft_libre": 0.4
+      },
+      "customization": {
+        "preconfigured": 1.0,
+        "curated": 0.6
+      },
+      "hardware": {
+        "modern_standard": 0.8,
+        "old_moderate": 0.5,
+        "arm": 0.3
+      },
+      "stability": {
+        "lts": 1.0,
+        "set_and_forget": 0.8
+      },
+      "desktop_environment": {
+        "de_full_modern": 0.8
+      }
+    },
+    "year_created": 2005,
+    "based_on": "Ubuntu"
+  },
+  {
+    "name": "Vanilla OS",
+    "family": "Specialist",
+    "de": "GNOME",
+    "website": "https://vanillaos.org",
+    "color": "#FFAD00",
+    "description": "Next-gen immutable distro using the apx/abroot system. Atomic updates, Distrobox integration for running packages from any distro. Ubuntu/Debian base with a unique hybrid package approach.",
+    "scores": {
+      "use_case": {
+        "immutable_desktop": 1.0,
+        "desktop_polished": 0.6,
+        "dev_general": 0.4
+      },
+      "experience": {
+        "intermediate": 0.7,
+        "competent": 0.9,
+        "advanced": 0.6
+      },
+      "philosophy": {
+        "soft_libre": 0.7,
+        "foss_advocate": 0.5,
+        "moderate": 0.5
+      },
+      "customization": {
+        "immutable": 1.0,
+        "curated": 0.6
+      },
+      "hardware": {
+        "modern_standard": 0.9
+      },
+      "stability": {
+        "regular_release": 0.7,
+        "set_and_forget": 0.8,
+        "rolling_tested": 0.4
+      },
+      "desktop_environment": {
+        "de_full_modern": 1.0
+      }
+    },
+    "year_created": 2022,
+    "based_on": "Ubuntu"
+  },
+  {
+    "name": "OpenWrt",
+    "family": "Specialist",
+    "de": "Web UI (LuCI)",
+    "website": "https://openwrt.org",
+    "color": "#00B5E2",
+    "description": "Custom Linux firmware for routers and networking devices. Turns consumer routers into powerful, configurable network appliances with firewall, VPN, QoS, and advanced routing.",
+    "scores": {
+      "use_case": {
+        "network_appliance": 1.0
+      },
+      "experience": {
+        "competent": 0.7,
+        "advanced": 1.0,
+        "expert": 0.8
+      },
+      "philosophy": {
+        "foss_advocate": 0.8,
+        "libre_leaning": 0.6
+      },
+      "customization": {
+        "tweaker": 0.8,
+        "diy": 0.6
+      },
+      "hardware": {
+        "arm": 0.8,
+        "ultra_light": 0.5
+      },
+      "stability": {
+        "set_and_forget": 0.9,
+        "lts": 0.6
+      },
+      "desktop_environment": {
+        "de_none": 1.0
+      }
+    },
+    "year_created": 2004,
+    "based_on": "Independent"
+  },
+  {
+    "name": "Whonix",
+    "family": "Specialist",
+    "de": "Xfce",
+    "website": "https://www.whonix.org",
+    "color": "#006699",
+    "description": "Privacy-focused distro running inside VMs. All traffic is forced through Tor via a separate Gateway VM, making IP leaks architecturally impossible. More persistent than Tails.",
+    "scores": {
+      "use_case": {
+        "security_privacy": 1.0
+      },
+      "experience": {
+        "advanced": 0.9,
+        "expert": 0.8,
+        "competent": 0.5
+      },
+      "philosophy": {
+        "foss_advocate": 0.9,
+        "foss_purist": 0.6,
+        "libre_leaning": 0.7
+      },
+      "customization": {
+        "preconfigured": 0.8,
+        "moderate_custom": 0.3
+      },
+      "hardware": {
+        "virtual": 1.0
+      },
+      "stability": {
+        "regular_release": 0.7,
+        "lts": 0.5
+      },
+      "desktop_environment": {
+        "de_lightweight": 0.7
+      }
+    },
+    "year_created": 2012,
+    "based_on": "Debian"
+  },
+  {
+    "name": "Bluefin",
+    "family": "Specialist",
+    "de": "GNOME",
+    "website": "https://projectbluefin.io",
+    "color": "#1767DA",
+    "description": "A developer-focused, ChromeOS-like cloud native image. Based on Fedora Silverblue but loaded with Ubuntu's usability, brew, and container tools. Unbreakable, automated updates.",
+    "scores": {
+      "use_case": {
+        "immutable_desktop": 1.0,
+        "dev_general": 0.9,
+        "dev_ops": 0.9,
+        "desktop_polished": 0.8,
+        "desktop_simple": 0.6
+      },
+      "experience": {
+        "competent": 0.9,
+        "intermediate": 0.8,
+        "beginner": 0.7,
+        "advanced": 0.6
+      },
+      "philosophy": {
+        "pragmatist": 1.0,
+        "soft_libre": 0.4
+      },
+      "customization": {
+        "immutable": 1.0,
+        "curated": 0.8,
+        "preconfigured": 0.9
+      },
+      "hardware": {
+        "modern_standard": 1.0,
+        "modern_nvidia": 0.9
+      },
+      "stability": {
+        "set_and_forget": 1.0,
+        "regular_release": 0.8
+      },
+      "desktop_environment": {
+        "de_full_modern": 1.0
+      }
+    },
+    "year_created": 2023,
+    "based_on": "Fedora Silverblue"
+  },
+  {
+    "name": "Aurora",
+    "family": "Specialist",
+    "de": "KDE Plasma",
+    "website": "https://getaurora.dev",
+    "color": "#4EB3D3",
+    "description": "The KDE Plasma counterpart to Bluefin from the Universal Blue project. Combines an unbreakable read-only Fedora Kinoite core with an outstanding out-of-the-box developer experience.",
+    "scores": {
+      "use_case": {
+        "immutable_desktop": 1.0,
+        "dev_general": 0.9,
+        "dev_ops": 0.9,
+        "desktop_polished": 0.8,
+        "desktop_simple": 0.5
+      },
+      "experience": {
+        "competent": 0.9,
+        "intermediate": 0.8,
+        "beginner": 0.7,
+        "advanced": 0.6
+      },
+      "philosophy": {
+        "pragmatist": 1.0,
+        "soft_libre": 0.4
+      },
+      "customization": {
+        "immutable": 1.0,
+        "curated": 0.8,
+        "preconfigured": 0.9
+      },
+      "hardware": {
+        "modern_standard": 1.0,
+        "modern_nvidia": 0.9
+      },
+      "stability": {
+        "set_and_forget": 1.0,
+        "regular_release": 0.8
+      },
+      "desktop_environment": {
+        "de_full_traditional": 1.0,
+        "de_full_modern": 0.6
+      }
+    },
+    "year_created": 2023,
+    "based_on": "Fedora Silverblue"
+  }
+]

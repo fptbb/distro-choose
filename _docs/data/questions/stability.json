@@ -1,0 +1,56 @@
+[
+  {
+    "id": "stab_start",
+    "text": "How do you want your system to receive updates?",
+    "options": [
+      {
+        "text": "🚀 Always the newest — I accept the risk",
+        "next": "bleeding_edge"
+      },
+      {
+        "text": "🔄 Rolling but tested — new stuff, less breakage",
+        "next": "rolling_tested"
+      },
+      {
+        "text": "📅 Regular releases every 6-12 months",
+        "next": "regular_release"
+      },
+      {
+        "text": "🛡️ LTS — security patches for years, stable base",
+        "next": "lts"
+      },
+      {
+        "text": "🪨 Set it and forget it — minimal maintenance",
+        "next": "set_and_forget"
+      },
+      {
+        "text": "🏢 Enterprise — 10-year certified support",
+        "next": "enterprise_stable"
+      }
+    ]
+  },
+  {
+    "id": "bleeding_edge",
+    "text": "Bleeding Edge"
+  },
+  {
+    "id": "rolling_tested",
+    "text": "Rolling (Tested)"
+  },
+  {
+    "id": "regular_release",
+    "text": "Regular Release"
+  },
+  {
+    "id": "lts",
+    "text": "Long-Term Support"
+  },
+  {
+    "id": "set_and_forget",
+    "text": "Set & Forget"
+  },
+  {
+    "id": "enterprise_stable",
+    "text": "Enterprise Stable"
+  }
+]

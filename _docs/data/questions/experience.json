@@ -1,0 +1,104 @@
+[
+  {
+    "id": "exp_start",
+    "text": "How much experience do you have with Linux?",
+    "options": [
+      {
+        "text": "🌱 None — I've never used Linux",
+        "next": "exp_none"
+      },
+      {
+        "text": "🌿 Some — I've tried it or used it briefly",
+        "next": "exp_some"
+      },
+      {
+        "text": "🌲 Comfortable — I use the terminal regularly",
+        "next": "exp_comfortable"
+      },
+      {
+        "text": "⚡ Expert — I compile kernels for fun",
+        "next": "exp_expert"
+      }
+    ]
+  },
+  {
+    "id": "exp_none",
+    "text": "Have you used any operating system's command line before?",
+    "options": [
+      {
+        "text": "🚫 No, never",
+        "next": "beginner"
+      },
+      {
+        "text": "⏱️ A little bit (PowerShell, CMD, etc.)",
+        "next": "newcomer"
+      }
+    ]
+  },
+  {
+    "id": "exp_some",
+    "text": "Can you install software from the terminal?",
+    "options": [
+      {
+        "text": "🖱️ I can follow guides, but I prefer GUIs",
+        "next": "intermediate"
+      },
+      {
+        "text": "📦 Yes, I'm comfortable with package managers",
+        "next": "competent"
+      }
+    ]
+  },
+  {
+    "id": "exp_comfortable",
+    "text": "Have you configured system services or compiled software from source?",
+    "options": [
+      {
+        "text": "📦 Not really — I stick to packages",
+        "next": "competent"
+      },
+      {
+        "text": "⚙️ Yes, I manage configs and services",
+        "next": "advanced"
+      }
+    ]
+  },
+  {
+    "id": "exp_expert",
+    "text": "What level of system building have you done?",
+    "options": [
+      {
+        "text": "🧱 Built Arch / configured complex setups",
+        "next": "advanced"
+      },
+      {
+        "text": "🧠 Built Gentoo/LFS / written kernel modules",
+        "next": "expert"
+      }
+    ]
+  },
+  {
+    "id": "beginner",
+    "text": "Beginner"
+  },
+  {
+    "id": "newcomer",
+    "text": "Newcomer"
+  },
+  {
+    "id": "intermediate",
+    "text": "Intermediate"
+  },
+  {
+    "id": "competent",
+    "text": "Competent"
+  },
+  {
+    "id": "advanced",
+    "text": "Advanced"
+  },
+  {
+    "id": "expert",
+    "text": "Expert"
+  }
+]

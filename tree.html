@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DistroChoose - Distro Tree</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg" href="icon.svg">
+</head>
+
+<body>
+    <div class="main-container">
+        <a href="index.html" class="home-link" title="Return to Home"><h1>Distro Tree</h1></a>
+        <p class="intro-text">A visual tree of Linux distributions, tracking how they evolved over the years and their relationships.</p>
+        
+        <div id="tree-container" class="tree-container"></div>
+
+        <div id="buttons" style="margin-top: 40px; padding-bottom: 60px;">
+            <button onclick="location.href='index.html'">Back</button>
+        </div>
+    </div>
+
+    <script src="data/data.js"></script>
+    <script>
+        (function () {
+            var rawDistros = typeof distros !== 'undefined' ? distros : [];
+            var container = document.getElementById('tree-container');
+
+            var logosData = {};
+            rawDistros.forEach(function (d) {
+                var slug = d.slug || d.name.toLowerCase().replace(/[^a-z0-9]/g, '_').replace(/_+/g, '_').replace(/^_|_$/g, '');
+                var img = new Image();
+                img.src = 'icons/distros/' + slug + '.png';
+                img.onload = function () { logosData[d.name] = img; renderRoot(); };
+                img.onerror = function () { 
+                    img.src = 'icons/distros/' + slug + '.svg';
+                    img.onload = function () { logosData[d.name] = img; renderRoot(); };
+                };
+            });
+
+            if (!rawDistros || rawDistros.length === 0 || !rawDistros[0].year_created) {
+               container.innerHTML = '<p style="text-align:center; padding: 40px; color: var(--text-dim);">Distro year data is currently loading or missing.<br>Please ensure the data update scripts have been run!</p>';
+               return;
+            }
+
+            // Build node map
+            var nodes = {};
+            function renderRoot() {
+                nodes = {};
+                rawDistros.forEach(function(d) {
+                    nodes[d.name] = { data: d, children: [] };
+                });
+
+                // Fallback Genesis Node
+                nodes['Linux'] = { data: { name: 'Linux Kernel', year_created: 1991, de: 'None', color: '#ffffff' }, children: [] };
+                
+                // Link parents
+                rawDistros.forEach(function(d) {
+                    var parentName = d.based_on;
+                    if (!parentName || parentName === 'Independent' || parentName === 'SLS') {
+                        parentName = 'Linux';
+                    }
+                    
+                    // If the specified parent is missing from our current DB, stub it out
+                    if (!nodes[parentName]) {
+                        nodes[parentName] = { data: { name: parentName, year_created: '?', color: '#888' }, children: [] };
+                    }
+                    nodes[parentName].children.push(nodes[d.name]);
+                });
+
+                container.innerHTML = '<ul class="tree-list root-tree">' + renderNode(nodes['Linux']) + '</ul>';
+            }
+
+            // Render Recursively
+            function renderNode(node) {
+                if (!node) return '';
+                
+                // Sort children chronologically
+                node.children.sort(function(a, b) {
+                    var ya = a.data.year_created === '?' ? 9999 : parseInt(a.data.year_created);
+                    var yb = b.data.year_created === '?' ? 9999 : parseInt(b.data.year_created);
+                    return ya - yb;
+                });
+
+                var isDistroUrl = !!node.data.scores; // Only link real distros
+                var logoImg = logosData[node.data.name] ? '<img src="' + logosData[node.data.name].src + '" style="width:20px;height:20px;vertical-align:middle;margin-right:8px;border-radius:4px;">' : '';
+
+                var html = '<li class="tree-node">';
+                html += '<div class="tree-card" style="border-left: 4px solid ' + (node.data.color || '#4ade80') + '">';
+                html += '<div class="tree-title">';
+                html += '<span style="display:flex;align-items:center;">' + logoImg + node.data.name + '</span>';
+                html += '<span class="tree-year">' + node.data.year_created + '</span>';
+                html += '</div>';
+                
+                if (isDistroUrl) {
+                    html += '<a href="description.html?id=' + encodeURIComponent(node.data.name) + '&type=distro">View Profile &rarr;</a>';
+                }
+                html += '</div>';
+
+                if (node.children.length > 0) {
+                    html += '<ul class="tree-list">';
+                    node.children.forEach(function(c) {
+                        html += renderNode(c);
+                    });
+                    html += '</ul>';
+                }
+                html += '</li>';
+                return html;
+            }
+
+            renderRoot();
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,716 @@
+{
+  "use_case": [
+    {
+      "id": "use_start",
+      "text": "What will you primarily use this computer for?",
+      "options": [
+        {
+          "text": "🖥️ Everyday desktop (browsing, docs, email)",
+          "next": "desktop_type"
+        },
+        {
+          "text": "💻 Programming & development",
+          "next": "dev_type"
+        },
+        {
+          "text": "🎮 Gaming",
+          "next": "gaming_type"
+        },
+        {
+          "text": "🖧 Server or infrastructure",
+          "next": "server_type"
+        },
+        {
+          "text": "🎬 Audio / video / media production",
+          "next": "media_production"
+        },
+        {
+          "text": "🔒 Security or privacy",
+          "next": "security_type"
+        },
+        {
+          "text": "📚 Education or learning Linux",
+          "next": "education_type"
+        },
+        {
+          "text": "🔄 I want an unbreakable immutable desktop",
+          "next": "immutable_desktop"
+        }
+      ]
+    },
+    {
+      "id": "desktop_type",
+      "text": "What matters most for your desktop?",
+      "options": [
+        {
+          "text": "🛠️ Just works, nothing fancy",
+          "next": "desktop_simple"
+        },
+        {
+          "text": "🎨 Beautiful, polished, modern look",
+          "next": "desktop_polished"
+        },
+        {
+          "text": "🪶 Lightweight — my hardware is limited",
+          "next": "desktop_light"
+        }
+      ]
+    },
+    {
+      "id": "dev_type",
+      "text": "What kind of development?",
+      "options": [
+        {
+          "text": "🌐 Web / app / general programming",
+          "next": "dev_general"
+        },
+        {
+          "text": "☁️ DevOps, containers, cloud infrastructure",
+          "next": "dev_ops"
+        },
+        {
+          "text": "⚙️ Systems / kernel / embedded / low-level",
+          "next": "dev_systems"
+        }
+      ]
+    },
+    {
+      "id": "gaming_type",
+      "text": "What kind of gaming experience?",
+      "options": [
+        {
+          "text": "🎮 Easy — install Steam and play",
+          "next": "gaming_easy"
+        },
+        {
+          "text": "⚡ Maximum FPS — I want to tune everything",
+          "next": "gaming_performance"
+        },
+        {
+          "text": "📺 Console-like HTPC / Steam Deck style",
+          "next": "gaming_console"
+        }
+      ]
+    },
+    {
+      "id": "server_type",
+      "text": "What kind of server?",
+      "options": [
+        {
+          "text": "🏢 Enterprise / production (10+ year support)",
+          "next": "server_enterprise"
+        },
+        {
+          "text": "🏠 Home server / self-hosting",
+          "next": "server_home"
+        },
+        {
+          "text": "🐳 Containers & microservices (Docker/K8s)",
+          "next": "server_containers"
+        },
+        {
+          "text": "💾 NAS / file storage appliance",
+          "next": "nas_storage"
+        },
+        {
+          "text": "🔒 Router / firewall / network appliance",
+          "next": "network_appliance"
+        }
+      ]
+    },
+    {
+      "id": "security_type",
+      "text": "What's your security focus?",
+      "options": [
+        {
+          "text": "🗡️ Pentesting & offensive security",
+          "next": "security_offensive"
+        },
+        {
+          "text": "🕵️ Privacy, anonymity & anti-surveillance",
+          "next": "security_privacy"
+        }
+      ]
+    },
+    {
+      "id": "education_type",
+      "text": "What's your learning goal?",
+      "options": [
+        {
+          "text": "🎓 Classroom / educational software for students",
+          "next": "education"
+        },
+        {
+          "text": "🧠 I want to deeply learn how Linux works",
+          "next": "learning"
+        }
+      ]
+    },
+    {
+      "id": "desktop_simple",
+      "text": "Simple Desktop"
+    },
+    {
+      "id": "desktop_polished",
+      "text": "Polished Desktop"
+    },
+    {
+      "id": "desktop_light",
+      "text": "Lightweight Desktop"
+    },
+    {
+      "id": "dev_general",
+      "text": "General Development"
+    },
+    {
+      "id": "dev_ops",
+      "text": "DevOps / Cloud"
+    },
+    {
+      "id": "dev_systems",
+      "text": "Systems Development"
+    },
+    {
+      "id": "gaming_easy",
+      "text": "Easy Gaming"
+    },
+    {
+      "id": "gaming_performance",
+      "text": "Performance Gaming"
+    },
+    {
+      "id": "gaming_console",
+      "text": "Console-Style Gaming"
+    },
+    {
+      "id": "server_enterprise",
+      "text": "Enterprise Server"
+    },
+    {
+      "id": "server_home",
+      "text": "Home Server"
+    },
+    {
+      "id": "server_containers",
+      "text": "Containers & Microservices"
+    },
+    {
+      "id": "nas_storage",
+      "text": "NAS & Storage"
+    },
+    {
+      "id": "network_appliance",
+      "text": "Network / Firewall"
+    },
+    {
+      "id": "media_production",
+      "text": "Media Production"
+    },
+    {
+      "id": "security_offensive",
+      "text": "Pentesting"
+    },
+    {
+      "id": "security_privacy",
+      "text": "Privacy & Anonymity"
+    },
+    {
+      "id": "education",
+      "text": "Education"
+    },
+    {
+      "id": "learning",
+      "text": "Learning Linux"
+    },
+    {
+      "id": "immutable_desktop",
+      "text": "Immutable Desktop"
+    }
+  ],
+  "experience": [
+    {
+      "id": "exp_start",
+      "text": "How much experience do you have with Linux?",
+      "options": [
+        {
+          "text": "🌱 None — I've never used Linux",
+          "next": "exp_none"
+        },
+        {
+          "text": "🌿 Some — I've tried it or used it briefly",
+          "next": "exp_some"
+        },
+        {
+          "text": "🌲 Comfortable — I use the terminal regularly",
+          "next": "exp_comfortable"
+        },
+        {
+          "text": "⚡ Expert — I compile kernels for fun",
+          "next": "exp_expert"
+        }
+      ]
+    },
+    {
+      "id": "exp_none",
+      "text": "Have you used any operating system's command line before?",
+      "options": [
+        {
+          "text": "🚫 No, never",
+          "next": "beginner"
+        },
+        {
+          "text": "⏱️ A little bit (PowerShell, CMD, etc.)",
+          "next": "newcomer"
+        }
+      ]
+    },
+    {
+      "id": "exp_some",
+      "text": "Can you install software from the terminal?",
+      "options": [
+        {
+          "text": "🖱️ I can follow guides, but I prefer GUIs",
+          "next": "intermediate"
+        },
+        {
+          "text": "📦 Yes, I'm comfortable with package managers",
+          "next": "competent"
+        }
+      ]
+    },
+    {
+      "id": "exp_comfortable",
+      "text": "Have you configured system services or compiled software from source?",
+      "options": [
+        {
+          "text": "📦 Not really — I stick to packages",
+          "next": "competent"
+        },
+        {
+          "text": "⚙️ Yes, I manage configs and services",
+          "next": "advanced"
+        }
+      ]
+    },
+    {
+      "id": "exp_expert",
+      "text": "What level of system building have you done?",
+      "options": [
+        {
+          "text": "🧱 Built Arch / configured complex setups",
+          "next": "advanced"
+        },
+        {
+          "text": "🧠 Built Gentoo/LFS / written kernel modules",
+          "next": "expert"
+        }
+      ]
+    },
+    {
+      "id": "beginner",
+      "text": "Beginner"
+    },
+    {
+      "id": "newcomer",
+      "text": "Newcomer"
+    },
+    {
+      "id": "intermediate",
+      "text": "Intermediate"
+    },
+    {
+      "id": "competent",
+      "text": "Competent"
+    },
+    {
+      "id": "advanced",
+      "text": "Advanced"
+    },
+    {
+      "id": "expert",
+      "text": "Expert"
+    }
+  ],
+  "philosophy": [
+    {
+      "id": "phil_start",
+      "text": "How do you feel about proprietary software?",
+      "options": [
+        {
+          "text": "🤷 I don't care — whatever works best",
+          "next": "pragmatist"
+        },
+        {
+          "text": "⚖️ I prefer open source but use proprietary when needed",
+          "next": "phil_moderate"
+        },
+        {
+          "text": "🛡️ I strongly prefer FOSS and avoid proprietary",
+          "next": "phil_foss"
+        },
+        {
+          "text": "🕊️ I want zero proprietary software — freedom only",
+          "next": "foss_purist"
+        },
+        {
+          "text": "🚫 I specifically want to avoid systemd",
+          "next": "systemd_free"
+        }
+      ]
+    },
+    {
+      "id": "phil_moderate",
+      "text": "How strict is your preference?",
+      "options": [
+        {
+          "text": "🧘 Flexible — I just lean toward open source",
+          "next": "moderate"
+        },
+        {
+          "text": "🔍 I'd choose the open-source option when reasonably possible",
+          "next": "soft_libre"
+        }
+      ]
+    },
+    {
+      "id": "phil_foss",
+      "text": "How actively do you promote FOSS?",
+      "options": [
+        {
+          "text": "🌍 I try to use FOSS but accept reality",
+          "next": "libre_leaning"
+        },
+        {
+          "text": "📢 I advocate for FOSS and contribute to it",
+          "next": "foss_advocate"
+        }
+      ]
+    },
+    {
+      "id": "pragmatist",
+      "text": "Pragmatist"
+    },
+    {
+      "id": "moderate",
+      "text": "Moderate"
+    },
+    {
+      "id": "soft_libre",
+      "text": "Soft Libre"
+    },
+    {
+      "id": "libre_leaning",
+      "text": "Libre-Leaning"
+    },
+    {
+      "id": "foss_advocate",
+      "text": "FOSS Advocate"
+    },
+    {
+      "id": "foss_purist",
+      "text": "FOSS Purist"
+    },
+    {
+      "id": "systemd_free",
+      "text": "Systemd-Free"
+    }
+  ],
+  "customization": [
+    {
+      "id": "custom_start",
+      "text": "How much setup and customization control do you want?",
+      "options": [
+        {
+          "text": "📦 Everything ready out of the box",
+          "next": "custom_easy"
+        },
+        {
+          "text": "🔧 Some tweaking — I like adjusting things",
+          "next": "custom_mid"
+        },
+        {
+          "text": "🏗️ Full control — I want to build my system",
+          "next": "custom_full"
+        },
+        {
+          "text": "🔒 Immutable — locked-down, atomic updates",
+          "next": "immutable"
+        }
+      ]
+    },
+    {
+      "id": "custom_easy",
+      "text": "Do you prefer opinionated defaults or a curated experience?",
+      "options": [
+        {
+          "text": "🛠️ Just give me sensible defaults",
+          "next": "preconfigured"
+        },
+        {
+          "text": "🎨 I want a thoughtfully curated, polished experience",
+          "next": "curated"
+        }
+      ]
+    },
+    {
+      "id": "custom_mid",
+      "text": "How deep do you want to go?",
+      "options": [
+        {
+          "text": "🎛️ Settings panels and config files",
+          "next": "moderate_custom"
+        },
+        {
+          "text": "⚙️ I want to tweak everything — kernel params, services, boot",
+          "next": "tweaker"
+        }
+      ]
+    },
+    {
+      "id": "custom_full",
+      "text": "How do you want to build your system?",
+      "options": [
+        {
+          "text": "🧱 Choose components and install them (like Arch)",
+          "next": "diy"
+        },
+        {
+          "text": "🛠️ Compile everything from source code",
+          "next": "from_scratch"
+        },
+        {
+          "text": "📝 Define my entire system in a config file (like NixOS)",
+          "next": "declarative"
+        }
+      ]
+    },
+    {
+      "id": "preconfigured",
+      "text": "Preconfigured"
+    },
+    {
+      "id": "curated",
+      "text": "Curated"
+    },
+    {
+      "id": "moderate_custom",
+      "text": "Moderate Customization"
+    },
+    {
+      "id": "tweaker",
+      "text": "Tweaker"
+    },
+    {
+      "id": "diy",
+      "text": "DIY"
+    },
+    {
+      "id": "from_scratch",
+      "text": "From Scratch"
+    },
+    {
+      "id": "declarative",
+      "text": "Declarative"
+    },
+    {
+      "id": "immutable",
+      "text": "Immutable / Atomic"
+    }
+  ],
+  "hardware": [
+    {
+      "id": "hw_start",
+      "text": "What hardware will this run on?",
+      "options": [
+        {
+          "text": "🖥️ Modern PC (2018+)",
+          "next": "hw_modern"
+        },
+        {
+          "text": "💾 Older PC (pre-2015 or <4GB RAM)",
+          "next": "hw_old"
+        },
+        {
+          "text": "🍎 Apple Silicon Mac (M1/M2/M3/M4)",
+          "next": "apple_silicon"
+        },
+        {
+          "text": "🔌 Raspberry Pi / ARM SBC",
+          "next": "arm"
+        },
+        {
+          "text": "☁️ Virtual machine or cloud server",
+          "next": "virtual"
+        }
+      ]
+    },
+    {
+      "id": "hw_modern",
+      "text": "What GPU do you have?",
+      "options": [
+        {
+          "text": "🟩 NVIDIA discrete GPU",
+          "next": "modern_nvidia"
+        },
+        {
+          "text": "🟥 AMD / Intel (integrated or discrete)",
+          "next": "modern_standard"
+        }
+      ]
+    },
+    {
+      "id": "hw_old",
+      "text": "How limited is the hardware?",
+      "options": [
+        {
+          "text": "🟢 Usable — 2-4 GB RAM, decent CPU",
+          "next": "old_moderate"
+        },
+        {
+          "text": "🔴 Very old — <2 GB RAM, ancient CPU",
+          "next": "ultra_light"
+        }
+      ]
+    },
+    {
+      "id": "modern_nvidia",
+      "text": "Modern (NVIDIA)"
+    },
+    {
+      "id": "modern_standard",
+      "text": "Modern (AMD/Intel)"
+    },
+    {
+      "id": "old_moderate",
+      "text": "Older Hardware"
+    },
+    {
+      "id": "ultra_light",
+      "text": "Ultra-Lightweight"
+    },
+    {
+      "id": "apple_silicon",
+      "text": "Apple Silicon"
+    },
+    {
+      "id": "arm",
+      "text": "ARM / SBC"
+    },
+    {
+      "id": "virtual",
+      "text": "Virtual / Cloud"
+    }
+  ],
+  "stability": [
+    {
+      "id": "stab_start",
+      "text": "How do you want your system to receive updates?",
+      "options": [
+        {
+          "text": "🚀 Always the newest — I accept the risk",
+          "next": "bleeding_edge"
+        },
+        {
+          "text": "🔄 Rolling but tested — new stuff, less breakage",
+          "next": "rolling_tested"
+        },
+        {
+          "text": "📅 Regular releases every 6-12 months",
+          "next": "regular_release"
+        },
+        {
+          "text": "🛡️ LTS — security patches for years, stable base",
+          "next": "lts"
+        },
+        {
+          "text": "🪨 Set it and forget it — minimal maintenance",
+          "next": "set_and_forget"
+        },
+        {
+          "text": "🏢 Enterprise — 10-year certified support",
+          "next": "enterprise_stable"
+        }
+      ]
+    },
+    {
+      "id": "bleeding_edge",
+      "text": "Bleeding Edge"
+    },
+    {
+      "id": "rolling_tested",
+      "text": "Rolling (Tested)"
+    },
+    {
+      "id": "regular_release",
+      "text": "Regular Release"
+    },
+    {
+      "id": "lts",
+      "text": "Long-Term Support"
+    },
+    {
+      "id": "set_and_forget",
+      "text": "Set & Forget"
+    },
+    {
+      "id": "enterprise_stable",
+      "text": "Enterprise Stable"
+    }
+  ],
+  "desktop_environment": [
+    {
+      "id": "de_start",
+      "text": "What kind of graphical interface do you prefer?",
+      "options": [
+        {
+          "text": "🖥️ Full desktop with activities/overview (like macOS/GNOME)",
+          "next": "de_full_modern"
+        },
+        {
+          "text": "📋 Traditional desktop with taskbar & start menu (like Windows)",
+          "next": "de_full_traditional"
+        },
+        {
+          "text": "🪶 Lightweight — functional but low on resources",
+          "next": "de_lightweight"
+        },
+        {
+          "text": "📐 Tiling window manager — keyboard-driven, no wasted space",
+          "next": "de_tiling"
+        },
+        {
+          "text": "⚙️ Minimal — just a window manager, I'll set up the rest",
+          "next": "de_minimal"
+        },
+        {
+          "text": "🖧 No GUI needed — headless/server only",
+          "next": "de_none"
+        }
+      ]
+    },
+    {
+      "id": "de_full_modern",
+      "text": "Full Modern DE"
+    },
+    {
+      "id": "de_full_traditional",
+      "text": "Full Traditional DE"
+    },
+    {
+      "id": "de_lightweight",
+      "text": "Lightweight DE"
+    },
+    {
+      "id": "de_tiling",
+      "text": "Tiling WM"
+    },
+    {
+      "id": "de_minimal",
+      "text": "Minimal WM"
+    },
+    {
+      "id": "de_none",
+      "text": "No GUI (Headless)"
+    }
+  ]
+}

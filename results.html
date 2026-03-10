@@ -1,128 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeoValues</title>
+    <title>DistroChoose - Results</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/svg" href="icon.svg">
 </head>
+
 <body>
     <div class="main-container">
-    <div class="main-results-wrapper">
-        <div class="top-section">
-            <div class="title-container">
-                <h1>NeoValues</h1>
-                <img src="version.svg" alt="Version" class="version-icon">
+        <div class="main-results-wrapper">
+            <div class="top-section">
+                <div class="title-container">
+                    <a href="index.html" class="home-link" title="Return to Home"><h1>DistroChoose</h1></a>
+                    <img src="version.svg" alt="Version" class="version-icon">
+                </div>
+                <div id="results-container"></div>
             </div>
-            <div id="results-container"></div>
-        </div>
-        
-        <div class="bottom-section">
-            <div id="label"></div>
-            
-            <div id="secondary-label"></div>
 
-            <p class="intro-text results-instruction">
-                Click on any icon or label to view its description and original source.
-            </p>
-            
-            <div id="buttons" style="margin-top: 30px;">
-                <button onclick="location.href='index.html'">Back to menu</button>
+            <div class="bottom-section">
+                <h2 class="results-heading">Recommended Distros</h2>
+                <div id="distro-cards"></div>
+
+                <div id="de-recommendation" style="display:none;">
+                    <h3 class="results-subheading">Recommended Desktop Environment</h3>
+                    <div id="de-card"></div>
+                </div>
+
+                <p class="intro-text results-instruction">
+                    Click on any icon, distro card, or value to view its description.
+                </p>
+
+                <div id="buttons" style="margin-top: 30px;">
+                    <button onclick="shareResults()" id="share-btn">Share Results</button>
+                    <button onclick="location.href='index.html'">Back to menu</button>
+                </div>
             </div>
         </div>
-    </div>
 
-    <script src="data.js"></script>
-    <script>
-        const results = JSON.parse(localStorage.getItem('quizResults') || '{}');
-        const container = document.getElementById('results-container');
-        const userResults = Object.values(results);
+        <script src="data/data.js"></script>
+        <script>
+            const results = JSON.parse(localStorage.getItem('quizResults') || '{}');
+            const container = document.getElementById('results-container');
 
-        categories.forEach(category => {
-            const resultValue = results[category];
-            if (resultValue) {
-                const wrapper = document.createElement('a');
-                wrapper.className = 'result-item';
-                wrapper.href = `description.html?id=${resultValue}&cat=${category}`;
-                wrapper.style.textDecoration = 'none';
-                wrapper.style.color = 'inherit';
+            // Display user's selected values as icons
+            categories.forEach(category => {
+                const resultValue = results[category];
+                if (resultValue) {
+                    const wrapper = document.createElement('a');
+                    wrapper.className = 'result-item';
+                    wrapper.href = 'description.html?id=' + resultValue + '&cat=' + category;
+                    wrapper.style.textDecoration = 'none';
+                    wrapper.style.color = 'inherit';
 
-                const img = document.createElement('img');
-                img.src = `icons/${category}/${resultValue}.svg`; 
-                img.className = 'result-icon';
+                    const img = document.createElement('img');
+                    img.src = 'icons/' + category + '/' + resultValue + '.svg';
+                    img.className = 'result-icon';
+                    img.onerror = function () { this.style.display = 'none'; };
 
-                const name = document.createElement('p');
-                name.innerText = (resultsMapping[category][resultValue] || resultValue).replace(/_/g, ' ');
-                name.className = 'result-text';
+                    const name = document.createElement('p');
+                    const displayName = (resultsMapping[category] && resultsMapping[category][resultValue]) || resultValue;
+                    name.innerText = displayName.replace(/_/g, ' ');
+                    name.className = 'result-text';
 
-                wrapper.appendChild(img);
-                wrapper.appendChild(name);
-                container.appendChild(wrapper);
+                    wrapper.appendChild(img);
+                    wrapper.appendChild(name);
+                    container.appendChild(wrapper);
+                }
+            });
+
+            // Score all distros
+            const scored = scoreDistros(results);
+
+            // Show top 3 as cards
+            const cardsDiv = document.getElementById('distro-cards');
+            const top3 = scored.slice(0, 3);
+
+            top3.forEach(function (item, index) {
+                var d = item.distro;
+                var card = document.createElement('a');
+                card.className = 'distro-card' + (index === 0 ? ' distro-card-primary' : '');
+                card.href = 'description.html?id=' + encodeURIComponent(d.name) + '&type=distro';
+                card.style.textDecoration = 'none';
+                card.style.color = 'inherit';
+                card.style.borderColor = d.color || '#7a7a7a';
+
+                var rank = document.createElement('div');
+                rank.className = 'distro-rank';
+                rank.innerText = index === 0 ? '🏆 Best Match' : (index === 1 ? '🥈 Runner Up' : '🥉 Also Consider');
+
+                var nameRow = document.createElement('div');
+                nameRow.className = 'distro-name-row';
+
+                var distroIcon = document.createElement('img');
+                var slug = d.slug || toSlug(d.name);
+                distroIcon.src = 'icons/distros/' + slug + '.png';
+                distroIcon.className = 'distro-card-icon';
+                distroIcon.alt = d.name;
+                distroIcon.onerror = function () {
+                    var dot = document.createElement('span');
+                    dot.className = 'distro-card-icon';
+                    dot.style.backgroundColor = d.color || '#7a7a7a';
+                    dot.style.display = 'flex';
+                    dot.style.alignItems = 'center';
+                    dot.style.justifyContent = 'center';
+                    dot.style.fontWeight = '700';
+                    dot.style.fontSize = '0.9rem';
+                    dot.style.color = '#ffffff';
+                    dot.innerText = d.name.charAt(0);
+                    this.parentNode.replaceChild(dot, this);
+                };
+
+                var distroName = document.createElement('span');
+                distroName.className = 'distro-name';
+                distroName.innerText = d.name;
+
+                var percent = document.createElement('span');
+                percent.className = 'match-percent';
+                percent.innerText = item.percent + '% match';
+
+                nameRow.appendChild(distroIcon);
+                nameRow.appendChild(distroName);
+                nameRow.appendChild(percent);
+
+                var desc = document.createElement('p');
+                desc.className = 'distro-card-desc';
+                desc.innerText = d.description;
+
+                var deBadge = document.createElement('div');
+                deBadge.className = 'de-badge';
+                deBadge.innerText = 'DE: ' + d.de;
+
+                card.appendChild(rank);
+                card.appendChild(nameRow);
+                card.appendChild(desc);
+                card.appendChild(deBadge);
+
+                // Add "Why this distro?" to the top result
+                if (index === 0) {
+                    var breakdownBox = document.createElement('div');
+                    breakdownBox.className = 'desc-list-box';
+                    breakdownBox.style.marginTop = '15px';
+                    var breakTitle = document.createElement('h3');
+                    breakTitle.className = 'desc-list-title';
+                    breakTitle.innerText = '🤔 Why this distro?';
+                    var breakList = document.createElement('ul');
+                    breakList.className = 'desc-list';
+                    
+                    var matchedPoints = [];
+                    categories.forEach(function (cat) {
+                        var userVal = results[cat];
+                        if (userVal && d.scores[cat] && d.scores[cat][userVal] > 0) {
+                            var score = d.scores[cat][userVal];
+                            var catName = categoryTitles[cat] || cat;
+                            var valName = (resultsMapping[cat] && resultsMapping[cat][userVal]) || userVal;
+                            var pct = Math.round(score * 100) + '%';
+                            matchedPoints.push({
+                                score: score,
+                                text: '<strong>' + catName + ':</strong> <a href="description.html?id=' + encodeURIComponent(userVal) + '&type=value&cat=' + encodeURIComponent(cat) + '" style="color:var(--accent-primary);text-decoration:none;" onmouseover="this.style.textDecoration=\'underline\'" onmouseout="this.style.textDecoration=\'none\'">' + valName.replace(/_/g, ' ') + '</a> (' + pct + ' match)'
+                            });
+                        }
+                    });
+                    
+                    if (matchedPoints.length > 0) {
+                        matchedPoints.sort(function(a, b) { return b.score - a.score; });
+                        var pointsToShow = matchedPoints.slice(0, 4); // Show top 4 reasons
+                        pointsToShow.forEach(function(pt) {
+                            var li = document.createElement('li');
+                            li.innerHTML = pt.text;
+                            breakList.appendChild(li);
+                        });
+                        breakdownBox.appendChild(breakTitle);
+                        breakdownBox.appendChild(breakList);
+                        card.appendChild(breakdownBox);
+                    }
+                }
+
+                cardsDiv.appendChild(card);
+            });
+
+            // DE/WM Recommendation
+            var deRec = recommendDE(results);
+            if (deRec) {
+                var deSection = document.getElementById('de-recommendation');
+                deSection.style.display = 'block';
+                var deCardDiv = document.getElementById('de-card');
+
+                var deCard = document.createElement('div');
+                deCard.className = 'distro-card de-rec-card';
+
+                var deName = document.createElement('div');
+                deName.className = 'distro-name-row';
+                var deTitle = document.createElement('span');
+                deTitle.className = 'distro-name';
+                deTitle.innerText = deRec.name;
+                var deType = document.createElement('span');
+                deType.className = 'de-badge';
+                deType.innerText = deRec.type;
+                deName.appendChild(deTitle);
+                deName.appendChild(deType);
+
+                var deDesc = document.createElement('p');
+                deDesc.className = 'distro-card-desc';
+                deDesc.innerText = deRec.description;
+
+                var deRam = document.createElement('div');
+                deRam.className = 'de-badge';
+                deRam.innerText = 'RAM: ' + deRec.ram_idle + ' idle / ' + deRec.ram_recommended + ' recommended';
+
+                deCard.appendChild(deName);
+                deCard.appendChild(deDesc);
+                deCard.appendChild(deRam);
+                deCardDiv.appendChild(deCard);
             }
-        });
 
-        const matchedKey = Object.keys(labelMapping).find(key => {
-            const requiredParts = key.split('|');
-            return requiredParts.every(part => userResults.includes(part));
-        });
-
-        const finalLabel = matchedKey ? labelMapping[matchedKey] : "No exact match";
-        const labelDiv = document.getElementById('label');
-        labelDiv.innerText = finalLabel;
-        labelDiv.innerHTML = `<a href="description.html?id=${encodeURIComponent(finalLabel)}&type=ideology" style="color: inherit; text-decoration: none; display: block;">${finalLabel}</a>`;
-        labelDiv.className = "label-bubble"; 
-        labelDiv.style.backgroundColor = labelColors[finalLabel] || "#7a7a7a";
-        const secondaryLabelDiv = document.getElementById('secondary-label');
-        
-        const scoredLabels = Object.keys(labelMapping)
-            .map(key => {
-                const requiredParts = key.split('|');
-                let score = 0;
-                let penalty = 0;
-
-                requiredParts.forEach(reqVal => {
-                    const category = Object.keys(resultsMapping).find(cat => resultsMapping[cat][reqVal]);
-                    const userVal = results[category];
-
-                    if (!userVal) return;
-
-                    const userGroup = Object.keys(subCategories[category] || {}).find(group => 
-                        subCategories[category][group].includes(userVal)
-                    );
-                    const reqGroup = Object.keys(subCategories[category] || {}).find(group => 
-                        subCategories[category][group].includes(reqVal)
-                    );
-
-                    if (userVal === reqVal) {
-                        score += 1.0;
-                    } 
-                    else if (userGroup && userGroup === reqGroup) {
-                        score += 0.5;
-                    }
-
-                    if (userGroup && reqGroup && incompatibleSubCategories[userGroup]?.includes(reqGroup)) {
-                        penalty = -100;
-                    }
-                });
-
-                return { key, label: labelMapping[key], score: score + penalty };
-            })
-            .sort((a, b) => b.score - a.score)
-            .filter(item => item.key !== matchedKey);
-
-        if (scoredLabels.length > 0) {
-            const nextMatch = scoredLabels[0];
-            secondaryLabelDiv.innerText = `Next closest match: ${nextMatch.label}`;
-            secondaryLabelDiv.innerHTML = `<a href="description.html?id=${encodeURIComponent(nextMatch.label)}&type=ideology" style="color: inherit; text-decoration: none; display: block;">Next closest match: ${nextMatch.label}</a>`;
-            secondaryLabelDiv.className = "label-bubble"; 
-            secondaryLabelDiv.style.display = "inline-block";
-            secondaryLabelDiv.style.borderColor = labelColors[nextMatch.label] || "#7a7a7a";
-            secondaryLabelDiv.style.color = labelColors[nextMatch.label] || "#7a7a7a";
-        } else {
-            secondaryLabelDiv.style.display = "none";
-        }
-    </script>
+            function shareResults() {
+                var btn = document.getElementById('share-btn');
+                if (!top3 || top3.length === 0) return;
+                
+                var top = top3[0];
+                var shareText = "I just took the DistroChoose quiz! 🐧\n\n" +
+                    "My Top Match: " + top.distro.name + " (" + top.percent + "%)\n" +
+                    (top3.length > 1 ? "Also Consider: " + top3[1].distro.name + "\n" : "") +
+                    (deRec ? "Desktop Environment: " + deRec.name + "\n" : "") +
+                    "\nFind your Linux Match: https://fptbb.github.io/distro-choose/";
+                
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(shareText).then(function() {
+                        var oldText = btn.innerText;
+                        btn.innerText = "Copied to clipboard!";
+                        setTimeout(function() { btn.innerText = oldText; }, 2000);
+                    });
+                } else {
+                    alert("Copy this:\n\n" + shareText);
+                }
+            }
+        </script>
     </div>
 </body>
+
 </html>

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DistroChoose - Distro Map</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg" href="icon.svg">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1"></script>
+    <style>
+        .map-controls {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+
+        .map-control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .map-control-group label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--accent-primary);
+        }
+
+        .map-control-group select {
+            background: var(--card-bg);
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 0.9rem;
+            font-family: inherit;
+            cursor: pointer;
+            min-width: 200px;
+            transition: border-color 0.2s ease;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%234ade80' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 32px;
+        }
+
+        .map-control-group select:hover,
+        .map-control-group select:focus,
+        .map-control-group button:hover {
+            border-color: var(--accent-primary);
+            outline: none;
+        }
+
+        .map-control-group button {
+            background: var(--card-bg);
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 10px 18px;
+            font-size: 0.9rem;
+            font-family: inherit;
+            cursor: pointer;
+            height: 40px;
+            transition: border-color 0.2s ease, background-color 0.2s ease;
+        }
+
+        .main-container {
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            min-height: 500px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-sm);
+            padding: 20px;
+        }
+
+        .map-legend {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .map-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+
+        .map-legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        canvas {
+            cursor: crosshair;
+        }
+
+        @media (max-width: 600px) {
+            .map-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .map-control-group select {
+                min-width: unset;
+            }
+
+            .chart-wrapper {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <a href="index.html" class="home-link" title="Return to Home"><h1>Distro Map</h1></a>
+        <p class="intro-text">Explore Linux distributions plotted by two dimensions. Pick the axes to compare, hover to
+            see names, and click any logo to learn more.</p>
+
+        <div class="map-controls">
+            <div class="map-control-group">
+                <label>X Axis</label>
+                <select id="x-axis"></select>
+            </div>
+            <div class="map-control-group">
+                <label>Y Axis</label>
+                <select id="y-axis"></select>
+            </div>
+            <div class="map-control-group">
+                <label>&nbsp;</label>
+                <button onclick="chart.resetZoom()">Reset Zoom</button>
+            </div>
+        </div>
+
+        <div class="chart-wrapper">
+            <canvas id="distro-chart"></canvas>
+        </div>
+
+        <div class="map-legend" id="map-legend"></div>
+
+        <div id="buttons" style="margin-top: 40px; padding-bottom: 60px;">
+            <button onclick="location.href='index.html'">Back</button>
+        </div>
+    </div>
+
+    <script src="data/data.js"></script>
+    <script>
+        (function () {
+            // ── Dimension definitions ─────────────────────────────────
+
+            var dimensions = {
+                'beginner_friendly': {
+                    label: 'Beginner Friendliness', compute: function (d) {
+                        var e = d.scores.experience || {}, c = d.scores.customization || {};
+                        return cl((e.beginner || 0) * 4 + (e.newcomer || 0) * 3 + (c.preconfigured || 0) * 2 + (c.curated || 0) * 1, 10);
+                    }
+                },
+                'power_user': {
+                    label: 'Power User / Expert', compute: function (d) {
+                        var e = d.scores.experience || {}, c = d.scores.customization || {};
+                        return cl((e.expert || 0) * 3 + (e.advanced || 0) * 3 + (c.diy || 0) * 2 + (c.from_scratch || 0) * 2, 10);
+                    }
+                },
+                'customization': {
+                    label: 'Customization Depth', compute: function (d) {
+                        var c = d.scores.customization || {};
+                        return cl((c.from_scratch || 0) * 3 + (c.diy || 0) * 3 + (c.tweaker || 0) * 2 + (c.declarative || 0) * 2, 10);
+                    }
+                },
+                'stability': {
+                    label: 'Stability / LTS', compute: function (d) {
+                        var s = d.scores.stability || {};
+                        return cl((s.enterprise_stable || 0) * 3 + (s.lts || 0) * 3 + (s.set_and_forget || 0) * 2 + (s.regular_release || 0) * 2, 10);
+                    }
+                },
+                'cutting_edge': {
+                    label: 'Cutting Edge', compute: function (d) {
+                        var s = d.scores.stability || {};
+                        return cl((s.bleeding_edge || 0) * 5 + (s.rolling_tested || 0) * 5, 10);
+                    }
+                },
+                'gaming': {
+                    label: 'Gaming', compute: function (d) {
+                        var u = d.scores.use_case || {};
+                        return cl((u.gaming_easy || 0) * 3 + (u.gaming_performance || 0) * 4 + (u.gaming_console || 0) * 3, 10);
+                    }
+                },
+                'server': {
+                    label: 'Server / Infrastructure', compute: function (d) {
+                        var u = d.scores.use_case || {};
+                        return cl((u.server_enterprise || 0) * 3 + (u.server_home || 0) * 2 + (u.server_containers || 0) * 2 + (u.nas_storage || 0) * 2 + (u.network_appliance || 0) * 1, 10);
+                    }
+                },
+                'lightweight': {
+                    label: 'Lightweight / Low Resources', compute: function (d) {
+                        var h = d.scores.hardware || {};
+                        return cl((h.ultra_light || 0) * 5 + (h.old_moderate || 0) * 3 + (h.arm || 0) * 2, 10);
+                    }
+                },
+                'privacy': {
+                    label: 'Privacy / Security', compute: function (d) {
+                        var u = d.scores.use_case || {};
+                        return cl((u.security_privacy || 0) * 5 + (u.security_offensive || 0) * 5, 10);
+                    }
+                },
+                'foss': {
+                    label: 'FOSS Philosophy', compute: function (d) {
+                        var p = d.scores.philosophy || {};
+                        return cl((p.foss_purist || 0) * 4 + (p.foss_advocate || 0) * 3 + (p.libre_leaning || 0) * 2 + (p.soft_libre || 0) * 1, 10);
+                    }
+                },
+                'desktop': {
+                    label: 'Desktop Use', compute: function (d) {
+                        var u = d.scores.use_case || {};
+                        return cl((u.desktop_simple || 0) * 3 + (u.desktop_polished || 0) * 4 + (u.desktop_light || 0) * 3, 10);
+                    }
+                },
+                'development': {
+                    label: 'Development', compute: function (d) {
+                        var u = d.scores.use_case || {};
+                        return cl((u.dev_general || 0) * 4 + (u.dev_ops || 0) * 3 + (u.dev_systems || 0) * 3, 10);
+                    }
+                }
+            };
+
+            function cl(val, max) { return Math.min(Math.round(val * 10) / 10, max); }
+
+            var familyColors = {
+                'Debian-Based': '#e06666',
+                'Arch-Based': '#6fa8dc',
+                'RPM-Based': '#93c47d',
+                'Independent': '#f6b26b',
+                'Specialist': '#b4a7d6'
+            };
+
+            // ── Pre-load logos ────────────────────────────────────────
+
+            var logos = {};
+            var logoFail = {};
+
+            distros.forEach(function (d) {
+                var slug = d.slug || toSlug(d.name);
+                var img = new Image();
+                img.src = 'icons/distros/' + slug + '.png';
+                img.onload = function () { logos[d.name] = img; };
+                img.onerror = function () { logoFail[d.name] = true; };
+            });
+
+            // ── Precompute ────────────────────────────────────────────
+
+            var dimKeys = Object.keys(dimensions);
+            var allPoints = distros.map(function (d) {
+                var sc = {};
+                dimKeys.forEach(function (k) { sc[k] = dimensions[k].compute(d); });
+                return {
+                    distro: d,
+                    scores: sc,
+                    jx: (Math.random() - 0.5) * 0.25,
+                    jy: (Math.random() - 0.5) * 0.25
+                };
+            });
+
+            // ── Dropdowns ─────────────────────────────────────────────
+
+            var xSel = document.getElementById('x-axis');
+            var ySel = document.getElementById('y-axis');
+            dimKeys.forEach(function (k) {
+                xSel.add(new Option(dimensions[k].label, k));
+                ySel.add(new Option(dimensions[k].label, k));
+            });
+            xSel.value = 'beginner_friendly';
+            ySel.value = 'customization';
+
+            // ── Legend ────────────────────────────────────────────────
+
+            var legendEl = document.getElementById('map-legend');
+            Object.keys(familyColors).forEach(function (f) {
+                var el = document.createElement('div');
+                el.className = 'map-legend-item';
+                el.innerHTML = '<div class="map-legend-dot" style="background:' + familyColors[f] + '"></div>' + f;
+                legendEl.appendChild(el);
+            });
+
+            // ── Logo drawing plugin ───────────────────────────────────
+
+            var hoverIdx = -1;
+            var SZ = 24;
+            var SZ_H = 36;
+
+            function rr(ctx, x, y, w, h, r) {
+                ctx.moveTo(x + r, y);
+                ctx.lineTo(x + w - r, y);
+                ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+                ctx.lineTo(x + w, y + h - r);
+                ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+                ctx.lineTo(x + r, y + h);
+                ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+                ctx.lineTo(x, y + r);
+                ctx.quadraticCurveTo(x, y, x + r, y);
+                ctx.closePath();
+            }
+
+            var logoPlugin = {
+                id: 'logoPlugin',
+                afterDatasetsDraw: function (chart) {
+                    var c = chart.ctx;
+                    var ds = chart.data.datasets[0];
+                    if (!ds) return;
+
+                    var meta = chart.getDatasetMeta(0);
+
+                    // Prevent items drawing over axes/outside chart bounds during pan & zoom
+                    c.save();
+                    c.beginPath();
+                    c.rect(chart.chartArea.left, chart.chartArea.top, chart.chartArea.width, chart.chartArea.height);
+                    c.clip();
+
+                    // Calculate temporary zoom context scale to prevent "stretching" icons during scroll
+                    var t = c.getTransform();
+                    var dpr = window.devicePixelRatio || 1;
+                    var sx = t.a / dpr;
+                    var sy = t.d / dpr;
+
+                    // Draw non-hovered first, hovered on top
+                    var order = [];
+                    for (var i = 0; i < ds.data.length; i++) order.push(i);
+                    if (hoverIdx >= 0) {
+                        order.splice(order.indexOf(hoverIdx), 1);
+                        order.push(hoverIdx);
+                    }
+
+                    order.forEach(function (i) {
+                        var pt = ds.data[i];
+                        // Use the exact meta pixel to track cleanly
+                        var px = meta.data[i].x;
+                        var py = meta.data[i].y;
+                        var hov = (i === hoverIdx);
+                        var sz = hov ? SZ_H : SZ;
+                        var half = sz / 2;
+                        var rad = hov ? 8 : 5;
+                        var fCol = familyColors[pt.family] || '#888';
+
+                        c.save();
+                        c.translate(px, py);
+                        
+                        // Inverse-scale the plugin's temporary transformation to keep icons perfectly square
+                        if (sx && sy && (sx !== 1 || sy !== 1)) {
+                            c.scale(1 / sx, 1 / sy);
+                        }
+
+                        // Shadow on hover
+                        if (hov) {
+                            c.shadowColor = 'rgba(74,222,128,0.6)';
+                            c.shadowBlur = 16;
+                        }
+
+                        // White bg
+                        c.beginPath();
+                        rr(c, -half - 2, -half - 2, sz + 4, sz + 4, rad);
+                        c.fillStyle = '#ffffff';
+                        c.fill();
+                        c.strokeStyle = fCol;
+                        c.lineWidth = hov ? 2.5 : 1.5;
+                        c.stroke();
+
+                        c.shadowColor = 'transparent';
+                        c.shadowBlur = 0;
+
+                        // Logo or fallback letter
+                        var logo = logos[pt.name];
+                        if (logo && !logoFail[pt.name]) {
+                            c.beginPath();
+                            rr(c, -half, -half, sz, sz, rad - 1);
+                            c.clip();
+                            c.drawImage(logo, -half, -half, sz, sz);
+                        } else {
+                            c.beginPath();
+                            rr(c, -half, -half, sz, sz, rad - 1);
+                            c.fillStyle = fCol;
+                            c.fill();
+                            c.fillStyle = '#fff';
+                            c.font = (hov ? '700 15px' : '700 10px') + ' system-ui,sans-serif';
+                            c.textAlign = 'center';
+                            c.textBaseline = 'middle';
+                            c.fillText(pt.name.charAt(0), 0, 1);
+                        }
+
+                        c.restore();
+
+                        // Name label on hover
+                        if (hov) {
+                            c.save();
+                            c.translate(px, py);
+                            if (sx && sy && (sx !== 1 || sy !== 1)) {
+                                c.scale(1 / sx, 1 / sy);
+                            }
+                            c.font = '700 12px system-ui,sans-serif';
+                            var tw = c.measureText(pt.name).width;
+                            var lx = -tw / 2 - 8;
+                            var ly = -half - 26;
+
+                            c.fillStyle = 'rgba(0,0,0,0.85)';
+                            c.beginPath();
+                            rr(c, lx, ly, tw + 16, 22, 6);
+                            c.fill();
+
+                            c.fillStyle = '#e2e8f0';
+                            c.textAlign = 'center';
+                            c.textBaseline = 'middle';
+                            c.fillText(pt.name, 0, ly + 11);
+                            c.restore();
+                        }
+                    });
+                    
+                    c.restore(); // Restore chartArea clipping bounds
+                }
+            };
+
+            // ── Chart ─────────────────────────────────────────────────
+
+            var canvas = document.getElementById('distro-chart');
+            var ctx = canvas.getContext('2d');
+
+            var chart = new Chart(ctx, {
+                type: 'scatter',
+                data: { datasets: [{ data: [], pointRadius: 0, pointHoverRadius: 0 }] },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: false,
+                    layout: { padding: { top: 24, right: 20, bottom: 10, left: 10 } },
+                    scales: {
+                        x: {
+                            min: -0.5, max: 10.5,
+                            title: { display: true, text: '', color: '#4ade80', font: { size: 13, weight: '700' } },
+                            ticks: { 
+                                color: '#71717a', 
+                                stepSize: 2,
+                                callback: function(value) { return (value * 10) + '%'; }
+                            },
+                            grid: { color: 'rgba(255,255,255,0.04)' }
+                        },
+                        y: {
+                            min: -0.5, max: 10.5,
+                            title: { display: true, text: '', color: '#4ade80', font: { size: 13, weight: '700' } },
+                            ticks: { 
+                                color: '#71717a', 
+                                stepSize: 2,
+                                callback: function(value) { return (value * 10) + '%'; }
+                            },
+                            grid: { color: 'rgba(255,255,255,0.04)' }
+                        }
+                    },
+                    plugins: { 
+                        legend: { display: false }, 
+                        tooltip: { enabled: false },
+                        zoom: {
+                            pan: {
+                                enabled: true,
+                                mode: 'xy'
+                            },
+                            zoom: {
+                                wheel: { enabled: true },
+                                pinch: { enabled: true },
+                                mode: 'xy'
+                            }
+                        }
+                    }
+                },
+                plugins: [logoPlugin]
+            });
+
+            // ── Mouse interaction ─────────────────────────────────────
+
+            canvas.addEventListener('mousemove', function (e) {
+                var rect = canvas.getBoundingClientRect();
+                var scaleX = canvas.width / rect.width;
+                var scaleY = canvas.height / rect.height;
+                var mx = (e.clientX - rect.left) * scaleX;
+                var my = (e.clientY - rect.top) * scaleY;
+                var xs = chart.scales.x, ys = chart.scales.y;
+                var ds = chart.data.datasets[0];
+                if (!ds) return;
+
+                var hit = SZ / 2 + 6;
+                var found = -1;
+                for (var i = ds.data.length - 1; i >= 0; i--) {
+                    var pt = ds.data[i];
+                    var px = xs.getPixelForValue(pt.x);
+                    var py = ys.getPixelForValue(pt.y);
+                    if (Math.abs(mx - px) < hit && Math.abs(my - py) < hit) {
+                        found = i; break;
+                    }
+                }
+                if (found !== hoverIdx) {
+                    hoverIdx = found;
+                    canvas.style.cursor = found >= 0 ? 'pointer' : 'crosshair';
+                    chart.draw();
+                }
+            });
+
+            canvas.addEventListener('mouseleave', function () {
+                if (hoverIdx !== -1) { hoverIdx = -1; chart.draw(); }
+            });
+
+            canvas.addEventListener('click', function () {
+                if (hoverIdx >= 0) {
+                    var pt = chart.data.datasets[0].data[hoverIdx];
+                    window.location.href = 'description.html?id=' + encodeURIComponent(pt.name) + '&type=distro';
+                }
+            });
+
+            // ── Update ────────────────────────────────────────────────
+
+            function updateChart() {
+                var xk = xSel.value, yk = ySel.value;
+                chart.options.scales.x.title.text = dimensions[xk].label;
+                chart.options.scales.y.title.text = dimensions[yk].label;
+
+                chart.data.datasets[0].data = allPoints.map(function (p) {
+                    return {
+                        x: p.scores[xk] + p.jx,
+                        y: p.scores[yk] + p.jy,
+                        name: p.distro.name,
+                        family: p.distro.family
+                    };
+                });
+                hoverIdx = -1;
+                chart.update('none');
+            }
+
+            xSel.addEventListener('change', updateChart);
+            ySel.addEventListener('change', updateChart);
+            updateChart();
+
+            // Redraw after logos finish loading
+            setTimeout(function () { chart.draw(); }, 600);
+            setTimeout(function () { chart.draw(); }, 2000);
+        })();
+    </script>
+</body>
+
+</html>

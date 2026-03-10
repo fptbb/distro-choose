@@ -1,0 +1,326 @@
+[
+  {
+    "name": "NixOS",
+    "family": "Independent",
+    "de": "Various (declarative)",
+    "website": "https://nixos.org",
+    "color": "#5277C3",
+    "description": "Declarative, reproducible OS. Your entire system is defined in a single configuration file. Atomic upgrades and rollbacks. Multiple package versions can coexist. Revolutionary but steep learning curve.",
+    "scores": {
+      "use_case": {
+        "dev_ops": 1.0,
+        "dev_general": 0.8,
+        "dev_systems": 0.8,
+        "server_containers": 0.6,
+        "server_home": 0.5,
+        "learning": 0.5
+      },
+      "experience": {
+        "expert": 1.0,
+        "advanced": 0.8,
+        "competent": 0.4
+      },
+      "philosophy": {
+        "foss_advocate": 0.8,
+        "soft_libre": 0.7,
+        "libre_leaning": 0.6
+      },
+      "customization": {
+        "declarative": 1.0,
+        "diy": 0.6,
+        "from_scratch": 0.5
+      },
+      "hardware": {
+        "modern_standard": 0.9,
+        "virtual": 0.8,
+        "modern_nvidia": 0.5
+      },
+      "stability": {
+        "rolling_tested": 0.8,
+        "lts": 0.6,
+        "bleeding_edge": 0.4
+      },
+      "desktop_environment": {
+        "de_full_modern": 0.5,
+        "de_full_traditional": 0.5,
+        "de_tiling": 0.7,
+        "de_none": 0.7,
+        "de_minimal": 0.6
+      }
+    },
+    "year_created": 2003,
+    "based_on": "Independent"
+  },
+  {
+    "name": "Gentoo",
+    "family": "Independent",
+    "de": "None (user compiles)",
+    "website": "https://gentoo.org",
+    "color": "#54487A",
+    "description": "Source-based meta-distribution. Compile every package from source with USE flags for exact hardware optimization. Maximum control, maximum learning, maximum build time.",
+    "scores": {
+      "use_case": {
+        "dev_systems": 1.0,
+        "learning": 1.0,
+        "dev_general": 0.5
+      },
+      "experience": {
+        "expert": 1.0,
+        "advanced": 0.6
+      },
+      "philosophy": {
+        "foss_advocate": 0.9,
+        "libre_leaning": 0.8,
+        "foss_purist": 0.5
+      },
+      "customization": {
+        "from_scratch": 1.0,
+        "diy": 0.8,
+        "declarative": 0.3
+      },
+      "hardware": {
+        "modern_standard": 0.8,
+        "old_moderate": 0.5,
+        "modern_nvidia": 0.4
+      },
+      "stability": {
+        "rolling_tested": 1.0,
+        "bleeding_edge": 0.5
+      },
+      "desktop_environment": {
+        "de_none": 0.7,
+        "de_minimal": 0.7,
+        "de_tiling": 0.6,
+        "de_full_traditional": 0.4
+      }
+    },
+    "year_created": 2000,
+    "based_on": "Independent"
+  },
+  {
+    "name": "Void Linux",
+    "family": "Independent",
+    "de": "Various",
+    "website": "https://voidlinux.org",
+    "color": "#478061",
+    "description": "Independent rolling-release distro using runit (not systemd) and XBPS package manager. Available with glibc or musl C library. Clean, fast, and opinionated.",
+    "scores": {
+      "use_case": {
+        "dev_systems": 0.9,
+        "learning": 0.8,
+        "desktop_light": 0.6,
+        "dev_general": 0.5
+      },
+      "experience": {
+        "advanced": 1.0,
+        "expert": 0.8,
+        "competent": 0.4
+      },
+      "philosophy": {
+        "systemd_free": 1.0,
+        "libre_leaning": 0.8,
+        "foss_advocate": 0.6,
+        "soft_libre": 0.5
+      },
+      "customization": {
+        "diy": 1.0,
+        "tweaker": 0.7,
+        "from_scratch": 0.4
+      },
+      "hardware": {
+        "modern_standard": 0.8,
+        "old_moderate": 0.7,
+        "ultra_light": 0.4
+      },
+      "stability": {
+        "rolling_tested": 1.0,
+        "bleeding_edge": 0.5
+      },
+      "desktop_environment": {
+        "de_minimal": 0.8,
+        "de_tiling": 0.7,
+        "de_lightweight": 0.6,
+        "de_none": 0.6
+      }
+    },
+    "year_created": 2008,
+    "based_on": "Independent"
+  },
+  {
+    "name": "Alpine Linux",
+    "family": "Independent",
+    "de": "None",
+    "website": "https://alpinelinux.org",
+    "color": "#0D597F",
+    "description": "Tiny, security-oriented distro using musl libc and BusyBox. The de facto standard for Docker containers. Extremely minimal \u2014 perfect for servers and embedded systems.",
+    "scores": {
+      "use_case": {
+        "server_containers": 1.0,
+        "server_home": 0.5,
+        "dev_ops": 0.6,
+        "network_appliance": 0.5,
+        "desktop_light": 0.2
+      },
+      "experience": {
+        "expert": 1.0,
+        "advanced": 0.8,
+        "competent": 0.3
+      },
+      "philosophy": {
+        "foss_advocate": 0.9,
+        "foss_purist": 0.6,
+        "libre_leaning": 0.7
+      },
+      "customization": {
+        "diy": 0.9,
+        "from_scratch": 0.7
+      },
+      "hardware": {
+        "virtual": 1.0,
+        "ultra_light": 0.8,
+        "arm": 0.7,
+        "modern_standard": 0.4
+      },
+      "stability": {
+        "enterprise_stable": 0.7,
+        "lts": 0.7,
+        "rolling_tested": 0.4
+      },
+      "desktop_environment": {
+        "de_none": 1.0,
+        "de_minimal": 0.3
+      }
+    },
+    "year_created": 2005,
+    "based_on": "Independent"
+  },
+  {
+    "name": "Slackware",
+    "family": "Independent",
+    "de": "KDE Plasma / Xfce",
+    "website": "http://www.slackware.com",
+    "color": "#1C3660",
+    "description": "The oldest active Linux distro (since 1993). No dependency resolution \u2014 packages are simple tarballs. Maximum simplicity and Unix philosophy. A rite of passage for Linux enthusiasts.",
+    "scores": {
+      "use_case": {
+        "learning": 1.0,
+        "dev_systems": 0.7,
+        "server_home": 0.4
+      },
+      "experience": {
+        "expert": 1.0,
+        "advanced": 0.7
+      },
+      "philosophy": {
+        "libre_leaning": 0.9,
+        "foss_purist": 0.5,
+        "systemd_free": 0.8
+      },
+      "customization": {
+        "from_scratch": 1.0,
+        "diy": 0.8
+      },
+      "hardware": {
+        "modern_standard": 0.6,
+        "old_moderate": 0.7
+      },
+      "stability": {
+        "lts": 0.8,
+        "set_and_forget": 0.6
+      },
+      "desktop_environment": {
+        "de_full_traditional": 0.5,
+        "de_minimal": 0.7,
+        "de_lightweight": 0.5,
+        "de_none": 0.6
+      }
+    },
+    "year_created": 1993,
+    "based_on": "Independent"
+  },
+  {
+    "name": "Solus",
+    "family": "Independent",
+    "de": "Budgie",
+    "website": "https://getsol.us",
+    "color": "#5294E2",
+    "description": "Independent curated rolling-release distro. Home of the Budgie desktop. Focuses on desktop computing excellence \u2014 not servers, not enterprise, just a beautiful desktop experience.",
+    "scores": {
+      "use_case": {
+        "desktop_polished": 1.0,
+        "desktop_simple": 0.7,
+        "gaming_easy": 0.4
+      },
+      "experience": {
+        "newcomer": 0.7,
+        "intermediate": 1.0,
+        "competent": 0.6,
+        "beginner": 0.5
+      },
+      "philosophy": {
+        "moderate": 0.8,
+        "soft_libre": 0.7,
+        "pragmatist": 0.6
+      },
+      "customization": {
+        "curated": 1.0,
+        "moderate_custom": 0.6
+      },
+      "hardware": {
+        "modern_standard": 1.0
+      },
+      "stability": {
+        "rolling_tested": 1.0,
+        "regular_release": 0.4
+      },
+      "desktop_environment": {
+        "de_full_modern": 0.9,
+        "de_full_traditional": 0.5
+      }
+    },
+    "year_created": 2015,
+    "based_on": "Independent"
+  },
+  {
+    "name": "Asahi Linux",
+    "family": "Independent",
+    "de": "KDE Plasma",
+    "website": "https://asahilinux.org",
+    "color": "#FF6F00",
+    "description": "Linux for Apple Silicon Macs (M1/M2/M3/M4). Reverse-engineers Apple's hardware to bring Linux to Mac. Based on Fedora. The only way to run Linux natively on modern Apple hardware.",
+    "scores": {
+      "use_case": {
+        "desktop_polished": 0.7,
+        "dev_general": 0.7,
+        "learning": 0.5
+      },
+      "experience": {
+        "advanced": 1.0,
+        "competent": 0.7,
+        "intermediate": 0.4
+      },
+      "philosophy": {
+        "soft_libre": 0.8,
+        "foss_advocate": 0.6,
+        "pragmatist": 0.4
+      },
+      "customization": {
+        "moderate_custom": 0.7,
+        "tweaker": 0.5
+      },
+      "hardware": {
+        "apple_silicon": 1.0
+      },
+      "stability": {
+        "rolling_tested": 0.8,
+        "bleeding_edge": 0.6
+      },
+      "desktop_environment": {
+        "de_full_traditional": 0.8,
+        "de_full_modern": 0.5
+      }
+    },
+    "year_created": 2021,
+    "based_on": "Fedora Workstation"
+  }
+]

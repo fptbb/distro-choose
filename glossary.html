@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DistroChoose - Glossary</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg" href="icon.svg">
+</head>
+
+<body>
+    <div class="main-container">
+        <a href="index.html" class="home-link" title="Return to Home"><h1>Glossary</h1></a>
+        <p class="intro-text">Short definitions of Linux terms used throughout DistroChoose.</p>
+        <div id="glossary-container" class="glossary-grid"></div>
+        <div id="buttons" style="margin-top: 40px; padding-bottom: 60px;">
+            <button onclick="location.href='index.html'">Back</button>
+        </div>
+    </div>
+
+    <script src="data/data.js"></script>
+    <script>
+        var container = document.getElementById('glossary-container');
+        var terms = Object.keys(glossaryTerms).sort();
+
+        terms.forEach(function (term) {
+            var card = document.createElement('div');
+            card.className = 'glossary-card';
+
+            var title = document.createElement('h3');
+            title.className = 'glossary-term';
+            title.innerText = term;
+
+            var desc = document.createElement('p');
+            desc.className = 'glossary-def';
+            desc.innerText = glossaryTerms[term];
+
+            card.appendChild(title);
+            card.appendChild(desc);
+            container.appendChild(card);
+        });
+    </script>
+</body>
+
+</html>

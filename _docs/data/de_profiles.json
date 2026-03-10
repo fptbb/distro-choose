@@ -1,0 +1,114 @@
+{
+  "GNOME": {
+    "name": "GNOME",
+    "type": "Desktop Environment",
+    "ram_idle": "~1.2 GB",
+    "ram_recommended": "4 GB+",
+    "era": "2016+",
+    "description": "Modern, touch-friendly DE with Activities overview, Wayland-first, minimal distractions. Used by Ubuntu, Fedora."
+  },
+  "KDE Plasma": {
+    "name": "KDE Plasma",
+    "type": "Desktop Environment",
+    "ram_idle": "~900 MB",
+    "ram_recommended": "4 GB+",
+    "era": "2015+",
+    "description": "Highly customizable full DE with panels, widgets, and deep settings. Used by Kubuntu, openSUSE, KDE neon."
+  },
+  "Cinnamon": {
+    "name": "Cinnamon",
+    "type": "Desktop Environment",
+    "ram_idle": "~1.0 GB",
+    "ram_recommended": "4 GB+",
+    "era": "2015+",
+    "description": "Traditional desktop with taskbar and start menu. Feels familiar to Windows users. Used by Linux Mint."
+  },
+  "Budgie": {
+    "name": "Budgie",
+    "type": "Desktop Environment",
+    "ram_idle": "~800 MB",
+    "ram_recommended": "4 GB+",
+    "era": "2015+",
+    "description": "Clean, modern DE with a sidebar notification center. Used by Solus, Ubuntu Budgie."
+  },
+  "Pantheon": {
+    "name": "Pantheon",
+    "type": "Desktop Environment",
+    "ram_idle": "~800 MB",
+    "ram_recommended": "4 GB+",
+    "era": "2015+",
+    "description": "macOS-inspired, curated DE with dock and minimal settings. Used exclusively by elementary OS."
+  },
+  "MATE": {
+    "name": "MATE",
+    "type": "Desktop Environment",
+    "ram_idle": "~600 MB",
+    "ram_recommended": "2 GB+",
+    "era": "2010+",
+    "description": "Continuation of GNOME 2. Traditional, stable, moderate on resources. Used by Ubuntu MATE."
+  },
+  "Xfce": {
+    "name": "Xfce",
+    "type": "Desktop Environment",
+    "ram_idle": "~500 MB",
+    "ram_recommended": "2 GB+",
+    "era": "2008+",
+    "description": "Lightweight, traditional DE. Stable and low resource usage. Used by Xubuntu, MX Linux."
+  },
+  "LXQt": {
+    "name": "LXQt",
+    "type": "Desktop Environment",
+    "ram_idle": "~350 MB",
+    "ram_recommended": "1 GB+",
+    "era": "2005+",
+    "description": "Ultra-lightweight Qt-based DE. Successor to LXDE. Used by Lubuntu."
+  },
+  "Deepin DE": {
+    "name": "Deepin DE",
+    "type": "Desktop Environment",
+    "ram_idle": "~1.0 GB",
+    "ram_recommended": "4 GB+",
+    "era": "2015+",
+    "description": "Visually stunning DE with macOS/iOS design language. Used by Deepin."
+  },
+  "i3": {
+    "name": "i3",
+    "type": "Tiling Window Manager",
+    "ram_idle": "~150 MB",
+    "ram_recommended": "512 MB+",
+    "era": "Any",
+    "description": "Manual tiling WM controlled entirely via keyboard. Highly efficient for developers."
+  },
+  "Sway": {
+    "name": "Sway",
+    "type": "Tiling Window Manager",
+    "ram_idle": "~150 MB",
+    "ram_recommended": "512 MB+",
+    "era": "2018+",
+    "description": "Wayland-native i3-compatible tiling WM. Drop-in replacement for i3 on Wayland."
+  },
+  "Hyprland": {
+    "name": "Hyprland",
+    "type": "Tiling Window Manager",
+    "ram_idle": "~200 MB",
+    "ram_recommended": "2 GB+",
+    "era": "2022+",
+    "description": "Dynamic Wayland compositor with smooth animations and eye-candy. Popular with ricers."
+  },
+  "Openbox": {
+    "name": "Openbox",
+    "type": "Stacking Window Manager",
+    "ram_idle": "~100 MB",
+    "ram_recommended": "256 MB+",
+    "era": "Any",
+    "description": "Minimal stacking WM. Right-click menu driven. Used by BunsenLabs, ArchCraft."
+  },
+  "IceWM": {
+    "name": "IceWM",
+    "type": "Stacking Window Manager",
+    "ram_idle": "~150 MB",
+    "ram_recommended": "512 MB+",
+    "era": "Any",
+    "description": "Lightweight WM with taskbar. Mimics Windows 95 layout. Used by antiX."
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "use_case": {
+    "desktop_simple": "Simple Desktop",
+    "desktop_polished": "Polished Desktop",
+    "desktop_light": "Lightweight Desktop",
+    "dev_general": "General Development",
+    "dev_ops": "DevOps / Cloud",
+    "dev_systems": "Systems Development",
+    "gaming_easy": "Easy Gaming",
+    "gaming_performance": "Performance Gaming",
+    "gaming_console": "Console-Style Gaming",
+    "server_enterprise": "Enterprise Server",
+    "server_home": "Home Server",
+    "server_containers": "Containers & Microservices",
+    "media_production": "Media Production",
+    "security_offensive": "Pentesting",
+    "security_privacy": "Privacy & Anonymity",
+    "education": "Education",
+    "learning": "Learning Linux",
+    "immutable_desktop": "Immutable Desktop",
+    "nas_storage": "NAS & Storage",
+    "network_appliance": "Network / Firewall"
+  },
+  "experience": {
+    "beginner": "Beginner",
+    "newcomer": "Newcomer",
+    "intermediate": "Intermediate",
+    "competent": "Competent",
+    "advanced": "Advanced",
+    "expert": "Expert"
+  },
+  "philosophy": {
+    "pragmatist": "Pragmatist",
+    "moderate": "Moderate",
+    "soft_libre": "Soft Libre",
+    "libre_leaning": "Libre-Leaning",
+    "foss_advocate": "FOSS Advocate",
+    "foss_purist": "FOSS Purist",
+    "systemd_free": "Systemd-Free"
+  },
+  "customization": {
+    "preconfigured": "Preconfigured",
+    "curated": "Curated",
+    "moderate_custom": "Moderate Customization",
+    "tweaker": "Tweaker",
+    "diy": "DIY",
+    "from_scratch": "From Scratch",
+    "declarative": "Declarative",
+    "immutable": "Immutable / Atomic"
+  },
+  "hardware": {
+    "modern_nvidia": "Modern (NVIDIA)",
+    "modern_standard": "Modern (AMD/Intel)",
+    "old_moderate": "Older Hardware",
+    "ultra_light": "Ultra-Lightweight",
+    "arm": "ARM / SBC",
+    "apple_silicon": "Apple Silicon",
+    "virtual": "Virtual / Cloud"
+  },
+  "stability": {
+    "bleeding_edge": "Bleeding Edge",
+    "rolling_tested": "Rolling (Tested)",
+    "regular_release": "Regular Release",
+    "lts": "Long-Term Support",
+    "set_and_forget": "Set & Forget",
+    "enterprise_stable": "Enterprise Stable"
+  },
+  "desktop_environment": {
+    "de_full_modern": "Full Modern DE",
+    "de_full_traditional": "Full Traditional DE",
+    "de_lightweight": "Lightweight DE",
+    "de_minimal": "Minimal WM",
+    "de_tiling": "Tiling WM",
+    "de_none": "No GUI (Headless)"
+  }
+}

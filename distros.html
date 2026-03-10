@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DistroChoose - All Distros</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg" href="icon.svg">
+</head>
+
+<body>
+    <div class="main-container">
+        <a href="index.html" class="home-link" title="Return to Home"><h1>All Distros</h1></a>
+        <p class="intro-text">Browse all Linux distributions included in DistroChoose, grouped by family. Click on any
+            distro to learn more.</p>
+        <div id="distros-container"></div>
+        <div id="buttons" style="margin-top: 40px; padding-bottom: 60px;">
+            <button onclick="location.href='index.html'">Back</button>
+        </div>
+    </div>
+
+    <script src="data/data.js"></script>
+
+    <script>
+        const container = document.getElementById('distros-container');
+
+        for (const group in distroGroups) {
+            const section = document.createElement('div');
+            section.className = 'category-section';
+
+            const title = document.createElement('h2');
+            title.className = 'category-title';
+            title.innerText = group;
+            section.appendChild(title);
+
+            const flexContainer = document.createElement('div');
+            flexContainer.className = 'values-flex-container';
+
+            distroGroups[group].forEach(distroName => {
+                const wrapper = document.createElement('a');
+                wrapper.className = 'result-item';
+                wrapper.href = `description.html?id=${encodeURIComponent(distroName)}&type=distro`;
+                wrapper.style.textDecoration = 'none';
+                wrapper.style.color = 'inherit';
+
+                const img = document.createElement('img');
+                const slug = distroSlugs[distroName] || toSlug(distroName);
+                img.src = 'icons/distros/' + slug + '.png';
+                img.className = 'distro-list-icon';
+                img.alt = distroName;
+                img.onerror = function () {
+                    // Replace with color dot fallback
+                    var dot = document.createElement('div');
+                    dot.style.width = '64px';
+                    dot.style.height = '64px';
+                    dot.style.borderRadius = '12px';
+                    dot.style.backgroundColor = labelColors[distroName] || '#7a7a7a';
+                    dot.style.marginBottom = '10px';
+                    dot.style.display = 'flex';
+                    dot.style.alignItems = 'center';
+                    dot.style.justifyContent = 'center';
+                    dot.style.fontWeight = '700';
+                    dot.style.fontSize = '1.4rem';
+                    dot.style.color = '#ffffff';
+                    dot.innerText = distroName.charAt(0);
+                    this.parentNode.replaceChild(dot, this);
+                };
+
+                const name = document.createElement('p');
+                name.innerText = distroName;
+                name.className = 'result-text';
+
+                wrapper.appendChild(img);
+                wrapper.appendChild(name);
+                flexContainer.appendChild(wrapper);
+            });
+
+            section.appendChild(flexContainer);
+            container.appendChild(section);
+        }
+    </script>
+</body>
+
+</html>

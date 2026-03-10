@@ -1,67 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ideology Description</title>
+    <title>DistroChoose - Description</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/svg" href="icon.svg">
 </head>
+
 <body>
     <div class="main-container">
-        <img id="ideology-icon" src="" alt="" class="desc-icon">
-        <h1 id="ideology-title">Loading...</h1>
-        
-        <div class="description-box">
-            <p id="ideology-description"></p>
-        </div>
+        <div id="desc-header" class="desc-header"></div>
+        <div id="desc-body" class="desc-body"></div>
 
-        <div class="button-container">
-            <button id="icon-source-btn" style="display: none;" onclick="openIconSource()">Original Icon Source</button>
-            <div id="original-work-sign" class="original-work-sign">Original Work</div>
+        <div class="button-container" style="padding-bottom: 60px;">
+            <button id="website-btn" style="display: none;" onclick="openWebsite()">Official Website</button>
             <button onclick="window.history.back()">Back</button>
+            <button onclick="location.href='index.html'">Home</button>
         </div>
     </div>
 
-    <script src="data.js"></script>
+    <script src="data/data.js"></script>
     <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const ideologyId = urlParams.get('id');
-        const category = urlParams.get('cat');
-        const type = urlParams.get('type');
+        var urlParams = new URLSearchParams(window.location.search);
+        var itemId = urlParams.get('id');
+        var category = urlParams.get('cat');
+        var type = urlParams.get('type');
 
-        const titleEl = document.getElementById('ideology-title');
-        const descEl = document.getElementById('ideology-description');
-        const iconEl = document.getElementById('ideology-icon');
-        const sourceBtn = document.getElementById('icon-source-btn');
-        const originalSign = document.getElementById('original-work-sign');
+        var headerEl = document.getElementById('desc-header');
+        var bodyEl = document.getElementById('desc-body');
+        var websiteBtn = document.getElementById('website-btn');
+        var websiteUrl = null;
 
-        if (ideologyId) {
-            if (type === 'ideology') {
-                titleEl.innerText = ideologyId.toUpperCase();
-                iconEl.style.display = 'none';
-                sourceBtn.style.display = 'none';
-                originalSign.style.display = 'none';
-                descEl.innerText = descriptions[ideologyId] || "Ideology description coming soon!";
-            } else if (category) {
-                titleEl.innerText = ideologyId.replace(/_/g, ' ').toUpperCase();
-                iconEl.src = `icons/${category}/${ideologyId}.svg`;
-                descEl.innerText = descriptions[ideologyId] || "Description coming soon!";
+        if (itemId && type === 'distro') {
+            renderDistro(itemId);
+        } else if (itemId && category) {
+            renderLeafValue(category, itemId);
+        } else {
+            headerEl.innerHTML = '<h1>Not Found</h1>';
+            bodyEl.innerHTML = '<p class="intro-text">No item specified.</p>';
+        }
 
-                if (iconSources[ideologyId] && iconSources[ideologyId] !== "") {
-                    sourceBtn.style.display = 'block';
-                    originalSign.style.display = 'none';
-                } else {
-                    sourceBtn.style.display = 'none';
-                    originalSign.style.display = 'block';
-                }
+        // ── Distro Detail Page ──────────────────────────────────────
+
+        function renderDistro(name) {
+            var distro = null;
+            for (var i = 0; i < distros.length; i++) {
+                if (distros[i].name === name) { distro = distros[i]; break; }
+            }
+            if (!distro) {
+                headerEl.innerHTML = '<h1>' + name + '</h1>';
+                bodyEl.innerHTML = '<p class="intro-text">Distro not found in database.</p>';
+                return;
+            }
+
+            document.title = 'DistroChoose - ' + distro.name;
+
+            // Header with icon and name
+            var slug = distro.slug || toSlug(distro.name);
+            headerEl.innerHTML =
+                '<div class="desc-distro-header">' +
+                '<img src="icons/distros/' + slug + '.png" class="desc-distro-logo" alt="' + distro.name + '" onerror="this.style.display=\'none\'">' +
+                '<div>' +
+                '<h1 style="margin-bottom: 4px;">' + distro.name + '</h1>' +
+                '<span class="desc-family-badge" style="background:' + (distro.color || '#7a7a7a') + '">' + distro.family + '</span>' +
+                '</div>' +
+                '</div>';
+
+            // Description box
+            var html = '<div class="description-box">';
+            html += '<p style="font-size: 1.1rem; line-height: 1.7; margin: 16px 0;">' + distro.description + '</p>';
+            html += '</div>';
+
+            // Info grid
+            html += '<div class="desc-info-grid">';
+            html += infoCard('Desktop Environment', distro.de);
+            html += infoCard('Family', distro.family);
+            html += infoCard('Website', '<a href="' + distro.website + '" target="_blank" rel="noopener">' + distro.website + '</a>');
+            html += '</div>';
+
+            // Score breakdown
+            html += '<h2 class="results-heading" style="margin-top: 30px;">Score Profile</h2>';
+            html += '<p class="intro-text">How well this distro matches each quiz category. Higher bars = stronger match.</p>';
+            html += '<div class="desc-scores">';
+            categories.forEach(function (cat) {
+                var catScores = distro.scores[cat] || {};
+                var entries = Object.entries(catScores);
+                if (entries.length === 0) return;
+
+                // Sort by score descending
+                entries.sort(function (a, b) { return b[1] - a[1]; });
+
+                var catTitle = categoryTitles[cat] || cat;
+                html += '<div class="desc-score-category">';
+                html += '<h3 class="desc-score-cat-title">' + catTitle + '</h3>';
+
+                entries.forEach(function (entry) {
+                    var val = entry[0];
+                    var score = entry[1];
+                    var pct = Math.round(score * 100);
+                    var displayName = (resultsMapping[cat] && resultsMapping[cat][val]) || val.replace(/_/g, ' ');
+                    html += '<div class="desc-score-row">';
+                    html += '<a href="description.html?id=' + encodeURIComponent(val) + '&type=value&cat=' + encodeURIComponent(cat) + '" class="desc-score-label">' + displayName + '</a>';
+                    html += '<div class="desc-score-bar-bg"><div class="desc-score-bar-fill" style="width:' + pct + '%;"></div></div>';
+                    html += '<span class="desc-score-value">' + pct + '%</span>';
+                    html += '</div>';
+                });
+
+                html += '</div>';
+            });
+            html += '</div>';
+
+            bodyEl.innerHTML = html;
+
+            // Website button
+            if (distro.website) {
+                websiteUrl = distro.website;
+                websiteBtn.style.display = 'block';
             }
         }
 
-        function openIconSource() {
-            const sourceUrl = iconSources[ideologyId];
-            if (sourceUrl) window.open(sourceUrl, '_blank');
+        // ── Leaf Value Detail Page ──────────────────────────────────
+
+        function renderLeafValue(cat, val) {
+            var displayName = (resultsMapping[cat] && resultsMapping[cat][val]) || val.replace(/_/g, ' ');
+            var catTitle = categoryTitles[cat] || cat;
+            var leaf = (leafDescriptions[cat] && leafDescriptions[cat][val]) || null;
+
+            document.title = 'DistroChoose - ' + displayName;
+
+            // Header with icon
+            headerEl.innerHTML =
+                '<img src="icons/' + cat + '/' + val + '.svg" class="desc-icon" alt="' + displayName + '" onerror="this.style.display=\'none\'">' +
+                '<h1>' + displayName + '</h1>' +
+                '<p class="desc-category-label">' + catTitle + '</p>';
+
+            var html = '';
+
+            if (leaf) {
+                // Summary
+                html += '<div class="description-box">';
+                html += '<p style="font-size: 1.15rem; font-weight: 500; line-height: 1.7; margin: 16px 0; color: var(--text-primary);">' + leaf.summary + '</p>';
+                html += '<p style="line-height: 1.7; color: var(--text-dim); margin: 0 0 16px;">' + leaf.detail + '</p>';
+                html += '</div>';
+
+                // Good For
+                if (leaf.good_for && leaf.good_for.length > 0) {
+                    html += '<div class="desc-list-box">';
+                    html += '<h3 class="desc-list-title">✅ Good For</h3>';
+                    html += '<ul class="desc-list">';
+                    leaf.good_for.forEach(function (item) {
+                        html += '<li>' + item + '</li>';
+                    });
+                    html += '</ul></div>';
+                }
+
+                // What to look for
+                if (leaf.look_for && leaf.look_for.length > 0) {
+                    html += '<div class="desc-list-box">';
+                    html += '<h3 class="desc-list-title">🔍 What to Look For</h3>';
+                    html += '<ul class="desc-list">';
+                    leaf.look_for.forEach(function (item) {
+                        html += '<li>' + item + '</li>';
+                    });
+                    html += '</ul></div>';
+                }
+
+                // Top matching distros for this leaf value
+                html += '<h2 class="results-heading" style="margin-top: 30px;">Top Distros for ' + displayName + '</h2>';
+                html += '<div class="desc-top-distros">';
+
+                // Find top 5 distros that score highest on this value
+                var scored = [];
+                distros.forEach(function (d) {
+                    var catScores = d.scores[cat] || {};
+                    var score = catScores[val] || 0;
+                    if (score > 0) scored.push({ distro: d, score: score });
+                });
+                scored.sort(function (a, b) { return b.score - a.score; });
+                var top5 = scored.slice(0, 5);
+
+                if (top5.length > 0) {
+                    top5.forEach(function (item) {
+                        var d = item.distro;
+                        var slug = d.slug || toSlug(d.name);
+                        html += '<a href="description.html?id=' + encodeURIComponent(d.name) + '&type=distro" class="desc-distro-row">';
+                        html += '<img src="icons/distros/' + slug + '.png" class="distro-card-icon" alt="' + d.name + '" onerror="this.outerHTML=\'<span class=distro-card-icon style=background:' + (d.color || '#7a7a7a') + ';display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700>' + d.name.charAt(0) + '</span>\'">';
+                        html += '<span class="desc-distro-row-name">' + d.name + '</span>';
+                        html += '<span class="desc-score-value">' + Math.round(item.score * 100) + '%</span>';
+                        html += '</a>';
+                    });
+                } else {
+                    html += '<p class="intro-text">No distros specifically tuned for this value.</p>';
+                }
+                html += '</div>';
+
+            } else {
+                // Fallback
+                html += '<div class="description-box">';
+                html += '<p>Description coming soon for <strong>' + displayName + '</strong>.</p>';
+                html += '</div>';
+            }
+
+            bodyEl.innerHTML = html;
+        }
+
+        // ── Helpers ─────────────────────────────────────────────────
+
+        function infoCard(label, value) {
+            return '<div class="desc-info-card">' +
+                '<span class="desc-info-label">' + label + '</span>' +
+                '<span class="desc-info-value">' + value + '</span>' +
+                '</div>';
+        }
+
+        function openWebsite() {
+            if (websiteUrl) window.open(websiteUrl, '_blank');
         }
     </script>
 </body>
+
 </html>

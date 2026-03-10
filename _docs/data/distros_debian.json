@@ -1,0 +1,545 @@
+[
+  {
+    "name": "Ubuntu",
+    "family": "Debian-Based",
+    "de": "GNOME",
+    "website": "https://ubuntu.com",
+    "color": "#E95420",
+    "description": "The most popular desktop Linux distro. Ubuntu prioritizes ease of use with a polished GNOME desktop, Snap integration, and 5-year LTS support. Excellent hardware compatibility and massive community.",
+    "scores": {
+      "use_case": {
+        "desktop_simple": 1.0,
+        "desktop_polished": 0.7,
+        "dev_general": 0.7,
+        "dev_ops": 0.6,
+        "server_home": 0.6,
+        "server_enterprise": 0.5,
+        "server_containers": 0.5,
+        "gaming_easy": 0.4,
+        "education": 0.6,
+        "learning": 0.5,
+        "media_production": 0.3
+      },
+      "experience": {
+        "beginner": 1.0,
+        "newcomer": 0.9,
+        "intermediate": 0.7,
+        "competent": 0.5,
+        "advanced": 0.3,
+        "expert": 0.2
+      },
+      "philosophy": {
+        "pragmatist": 1.0,
+        "moderate": 0.8,
+        "soft_libre": 0.4,
+        "libre_leaning": 0.2
+      },
+      "customization": {
+        "preconfigured": 1.0,
+        "curated": 0.7,
+        "moderate_custom": 0.5,
+        "tweaker": 0.3
+      },
+      "hardware": {
+        "modern_nvidia": 0.8,
+        "modern_standard": 1.0,
+        "old_moderate": 0.4,
+        "arm": 0.5,
+        "virtual": 0.8
+      },
+      "stability": {
+        "lts": 1.0,
+        "regular_release": 0.8,
+        "set_and_forget": 0.7,
+        "rolling_tested": 0.1
+      },
+      "desktop_environment": {
+        "de_full_modern": 1.0,
+        "de_full_traditional": 0.4,
+        "de_lightweight": 0.2
+      }
+    },
+    "year_created": 2004,
+    "based_on": "Debian"
+  },
+  {
+    "name": "Linux Mint",
+    "family": "Debian-Based",
+    "de": "Cinnamon",
+    "website": "https://linuxmint.com",
+    "color": "#87CF3E",
+    "description": "A user-friendly distro based on Ubuntu with a traditional Cinnamon desktop. Ships without Snaps, uses Flatpak. Ideal for Windows migrants wanting a familiar taskbar-and-menu interface.",
+    "scores": {
+      "use_case": {
+        "desktop_simple": 1.0,
+        "desktop_polished": 0.8,
+        "desktop_light": 0.4,
+        "dev_general": 0.4,
+        "gaming_easy": 0.3,
+        "education": 0.5,
+        "learning": 0.5
+      },
+      "experience": {
+        "beginner": 1.0,
+        "newcomer": 1.0,
+        "intermediate": 0.6,
+        "competent": 0.3
+      },
+      "philosophy": {
+        "pragmatist": 0.9,
+        "moderate": 1.0,
+        "soft_libre": 0.6,
+        "libre_leaning": 0.3
+      },
+      "customization": {
+        "preconfigured": 1.0,
+        "curated": 0.8,
+        "moderate_custom": 0.4
+      },
+      "hardware": {
+        "modern_nvidia": 0.7,
+        "modern_standard": 1.0,
+        "old_moderate": 0.6,
+        "virtual": 0.5
+      },
+      "stability": {
+        "lts": 1.0,
+        "set_and_forget": 0.9,
+        "regular_release": 0.5
+      },
+      "desktop_environment": {
+        "de_full_traditional": 1.0,
+        "de_full_modern": 0.3,
+        "de_lightweight": 0.3
+      }
+    },
+    "year_created": 2006,
+    "based_on": "Ubuntu"
+  },
+  {
+    "name": "Pop!_OS",
+    "family": "Debian-Based",
+    "de": "GNOME (COSMIC)",
+    "website": "https://pop.system76.com",
+    "color": "#48B9C7",
+    "description": "System76's Ubuntu-based distro with excellent NVIDIA driver support, a tiling-capable GNOME desktop, and developer-friendly tools. Great for gaming and development on NVIDIA hardware.",
+    "scores": {
+      "use_case": {
+        "desktop_polished": 0.9,
+        "desktop_simple": 0.7,
+        "dev_general": 0.9,
+        "gaming_easy": 0.8,
+        "gaming_performance": 0.7,
+        "media_production": 0.5,
+        "learning": 0.4
+      },
+      "experience": {
+        "newcomer": 0.9,
+        "beginner": 0.7,
+        "intermediate": 0.9,
+        "competent": 0.7,
+        "advanced": 0.4
+      },
+      "philosophy": {
+        "pragmatist": 1.0,
+        "moderate": 0.7,
+        "soft_libre": 0.3
+      },
+      "customization": {
+        "preconfigured": 0.8,
+        "moderate_custom": 0.9,
+        "curated": 0.7,
+        "tweaker": 0.4
+      },
+      "hardware": {
+        "modern_nvidia": 1.0,
+        "modern_standard": 0.8,
+        "old_moderate": 0.3
+      },
+      "stability": {
+        "regular_release": 1.0,
+        "lts": 0.7,
+        "rolling_tested": 0.3,
+        "bleeding_edge": 0.3
+      },
+      "desktop_environment": {
+        "de_full_modern": 1.0,
+        "de_tiling": 0.5,
+        "de_full_traditional": 0.3
+      }
+    },
+    "year_created": 2017,
+    "based_on": "Ubuntu"
+  },
+  {
+    "name": "Zorin OS",
+    "family": "Debian-Based",
+    "de": "GNOME (Zorin)",
+    "website": "https://zorin.com",
+    "color": "#15A6F0",
+    "description": "Designed to look and feel like Windows or macOS. Beautiful layout options make the transition from other OS seamless. Based on Ubuntu LTS.",
+    "scores": {
+      "use_case": {
+        "desktop_simple": 1.0,
+        "desktop_polished": 1.0,
+        "gaming_easy": 0.4,
+        "education": 0.5
+      },
+      "experience": {
+        "beginner": 1.0,
+        "newcomer": 1.0,
+        "intermediate": 0.5
+      },
+      "philosophy": {
+        "pragmatist": 1.0,
+        "moderate": 0.7
+      },
+      "customization": {
+        "preconfigured": 0.9,
+        "curated": 1.0,
+        "moderate_custom": 0.3
+      },
+      "hardware": {
+        "modern_standard": 1.0,
+        "modern_nvidia": 0.7,
+        "old_moderate": 0.4
+      },
+      "stability": {
+        "regular_release": 1.0,
+        "lts": 0.8,
+        "set_and_forget": 0.6
+      },
+      "desktop_environment": {
+        "de_full_modern": 0.8,
+        "de_full_traditional": 1.0
+      }
+    },
+    "year_created": 2009,
+    "based_on": "Ubuntu"
+  },
+  {
+    "name": "elementary OS",
+    "family": "Debian-Based",
+    "de": "Pantheon",
+    "website": "https://elementary.io",
+    "color": "#3689E6",
+    "description": "A beautifully curated macOS-like experience. The Pantheon desktop is minimal and opinionated \u2014 fewer settings, maximum polish. Pay-what-you-want app store.",
+    "scores": {
+      "use_case": {
+        "desktop_polished": 1.0,
+        "desktop_simple": 0.8,
+        "education": 0.4
+      },
+      "experience": {
+        "beginner": 0.9,
+        "newcomer": 1.0,
+        "intermediate": 0.4
+      },
+      "philosophy": {
+        "moderate": 1.0,
+        "soft_libre": 0.7,
+        "pragmatist": 0.6
+      },
+      "customization": {
+        "curated": 1.0,
+        "preconfigured": 0.9
+      },
+      "hardware": {
+        "modern_standard": 1.0,
+        "modern_nvidia": 0.6
+      },
+      "stability": {
+        "regular_release": 1.0,
+        "lts": 0.7
+      },
+      "desktop_environment": {
+        "de_full_modern": 1.0
+      }
+    },
+    "year_created": 2011,
+    "based_on": "Ubuntu"
+  },
+  {
+    "name": "Kubuntu",
+    "family": "Debian-Based",
+    "de": "KDE Plasma",
+    "website": "https://kubuntu.org",
+    "color": "#0079C1",
+    "description": "Ubuntu with KDE Plasma instead of GNOME. Highly customizable interface with widgets, panels, and deep theming. Same Ubuntu base and repos.",
+    "scores": {
+      "use_case": {
+        "desktop_polished": 0.9,
+        "desktop_simple": 0.7,
+        "dev_general": 0.5,
+        "gaming_easy": 0.4
+      },
+      "experience": {
+        "beginner": 0.8,
+        "newcomer": 0.7,
+        "intermediate": 0.7,
+        "competent": 0.5
+      },
+      "philosophy": {
+        "pragmatist": 0.9,
+        "moderate": 0.7,
+        "soft_libre": 0.4
+      },
+      "customization": {
+        "moderate_custom": 1.0,
+        "tweaker": 0.8,
+        "curated": 0.5,
+        "preconfigured": 0.5
+      },
+      "hardware": {
+        "modern_standard": 1.0,
+        "modern_nvidia": 0.7,
+        "old_moderate": 0.3
+      },
+      "stability": {
+        "lts": 1.0,
+        "regular_release": 0.7
+      },
+      "desktop_environment": {
+        "de_full_traditional": 1.0,
+        "de_full_modern": 0.6
+      }
+    },
+    "year_created": 2005,
+    "based_on": "Ubuntu"
+  },
+  {
+    "name": "Xubuntu",
+    "family": "Debian-Based",
+    "de": "Xfce",
+    "website": "https://xubuntu.org",
+    "color": "#2284D2",
+    "description": "Ubuntu with the lightweight Xfce desktop. Good balance of features and performance for older or mid-range hardware.",
+    "scores": {
+      "use_case": {
+        "desktop_light": 1.0,
+        "desktop_simple": 0.7,
+        "education": 0.4
+      },
+      "experience": {
+        "beginner": 0.7,
+        "newcomer": 0.6,
+        "intermediate": 0.8,
+        "competent": 0.5
+      },
+      "philosophy": {
+        "pragmatist": 0.8,
+        "moderate": 0.7,
+        "soft_libre": 0.4
+      },
+      "customization": {
+        "preconfigured": 0.7,
+        "moderate_custom": 0.8,
+        "curated": 0.5
+      },
+      "hardware": {
+        "old_moderate": 1.0,
+        "modern_standard": 0.7,
+        "ultra_light": 0.4
+      },
+      "stability": {
+        "lts": 1.0,
+        "regular_release": 0.6
+      },
+      "desktop_environment": {
+        "de_lightweight": 1.0,
+        "de_full_traditional": 0.4
+      }
+    },
+    "year_created": 2006,
+    "based_on": "Ubuntu"
+  },
+  {
+    "name": "Lubuntu",
+    "family": "Debian-Based",
+    "de": "LXQt",
+    "website": "https://lubuntu.me",
+    "color": "#0068C8",
+    "description": "The lightest official Ubuntu flavor, using LXQt. Can run on machines with as little as 1 GB RAM. Ideal for aging hardware.",
+    "scores": {
+      "use_case": {
+        "desktop_light": 1.0,
+        "desktop_simple": 0.6,
+        "education": 0.3
+      },
+      "experience": {
+        "beginner": 0.6,
+        "newcomer": 0.5,
+        "intermediate": 0.7
+      },
+      "philosophy": {
+        "pragmatist": 0.7,
+        "moderate": 0.6,
+        "soft_libre": 0.4
+      },
+      "customization": {
+        "preconfigured": 0.6,
+        "moderate_custom": 0.7
+      },
+      "hardware": {
+        "ultra_light": 0.9,
+        "old_moderate": 1.0,
+        "modern_standard": 0.4
+      },
+      "stability": {
+        "lts": 1.0,
+        "regular_release": 0.5
+      },
+      "desktop_environment": {
+        "de_lightweight": 1.0
+      }
+    },
+    "year_created": 2009,
+    "based_on": "Ubuntu"
+  },
+  {
+    "name": "MX Linux",
+    "family": "Debian-Based",
+    "de": "Xfce",
+    "website": "https://mxlinux.org",
+    "color": "#3B3B3B",
+    "description": "Midweight Debian-based distro with excellent MX Tools suite. Can use sysvinit instead of systemd. Top DistroWatch ranking for years. Great for older hardware.",
+    "scores": {
+      "use_case": {
+        "desktop_light": 0.9,
+        "desktop_simple": 0.8,
+        "desktop_polished": 0.4
+      },
+      "experience": {
+        "beginner": 0.6,
+        "newcomer": 0.5,
+        "intermediate": 1.0,
+        "competent": 0.7
+      },
+      "philosophy": {
+        "pragmatist": 0.7,
+        "moderate": 0.8,
+        "soft_libre": 0.5,
+        "systemd_free": 0.6
+      },
+      "customization": {
+        "moderate_custom": 1.0,
+        "preconfigured": 0.6,
+        "tweaker": 0.5
+      },
+      "hardware": {
+        "old_moderate": 1.0,
+        "modern_standard": 0.6,
+        "ultra_light": 0.5
+      },
+      "stability": {
+        "lts": 0.9,
+        "set_and_forget": 1.0,
+        "regular_release": 0.4
+      },
+      "desktop_environment": {
+        "de_lightweight": 1.0,
+        "de_full_traditional": 0.4
+      }
+    },
+    "year_created": 2014,
+    "based_on": "Debian"
+  },
+  {
+    "name": "Debian",
+    "family": "Debian-Based",
+    "de": "GNOME",
+    "website": "https://debian.org",
+    "color": "#A80030",
+    "description": "The universal operating system. Rock-solid stability, enormous package repository, and the foundation for Ubuntu, Mint, and dozens of others. Conservative release cycle prioritizes reliability.",
+    "scores": {
+      "use_case": {
+        "server_enterprise": 0.9,
+        "server_home": 0.9,
+        "server_containers": 0.7,
+        "dev_ops": 0.7,
+        "dev_general": 0.6,
+        "desktop_simple": 0.4,
+        "nas_storage": 0.5
+      },
+      "experience": {
+        "competent": 0.9,
+        "advanced": 1.0,
+        "expert": 0.8,
+        "intermediate": 0.5
+      },
+      "philosophy": {
+        "libre_leaning": 1.0,
+        "soft_libre": 0.8,
+        "foss_advocate": 0.6,
+        "moderate": 0.5
+      },
+      "customization": {
+        "moderate_custom": 0.8,
+        "tweaker": 0.9,
+        "diy": 0.6,
+        "preconfigured": 0.4
+      },
+      "hardware": {
+        "modern_standard": 0.7,
+        "old_moderate": 0.8,
+        "virtual": 1.0,
+        "arm": 0.7,
+        "ultra_light": 0.4
+      },
+      "stability": {
+        "enterprise_stable": 1.0,
+        "lts": 0.9,
+        "set_and_forget": 0.8
+      },
+      "desktop_environment": {
+        "de_full_modern": 0.5,
+        "de_full_traditional": 0.6,
+        "de_lightweight": 0.7,
+        "de_none": 0.9,
+        "de_minimal": 0.6
+      }
+    },
+    "year_created": 1993,
+    "based_on": "Independent"
+  },
+  {
+    "name": "Deepin",
+    "family": "Debian-Based",
+    "de": "Deepin DE",
+    "website": "https://www.deepin.org",
+    "color": "#0078D7",
+    "description": "Chinese distro known for its stunningly beautiful Deepin Desktop Environment. Polished animations and iOS-like design. Based on Debian.",
+    "scores": {
+      "use_case": {
+        "desktop_polished": 1.0,
+        "desktop_simple": 0.7
+      },
+      "experience": {
+        "beginner": 0.8,
+        "newcomer": 0.9,
+        "intermediate": 0.5
+      },
+      "philosophy": {
+        "pragmatist": 0.8,
+        "moderate": 0.6
+      },
+      "customization": {
+        "curated": 1.0,
+        "preconfigured": 0.8
+      },
+      "hardware": {
+        "modern_standard": 1.0,
+        "modern_nvidia": 0.6
+      },
+      "stability": {
+        "regular_release": 1.0,
+        "lts": 0.5
+      },
+      "desktop_environment": {
+        "de_full_modern": 1.0
+      }
+    },
+    "year_created": 2004,
+    "based_on": "Debian"
+  }
+]

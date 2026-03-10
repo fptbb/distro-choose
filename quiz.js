@@ -1,10 +1,10 @@
 let questionsByCategory = {};
-let categoryOrder = ["economics", "resource_management", "culture", "authority", "nation", "foreign"];
+let categoryOrder = ["use_case", "experience", "philosophy", "customization", "hardware", "stability", "desktop_environment"];
 let currentCategoryIndex = 0;
 let currentQuestions = {};
 let results = {};
 
-fetch('questions_tree.json')
+fetch('data/questions.json')
   .then(res => res.json())
   .then(data => {
     questionsByCategory = data;
@@ -15,7 +15,16 @@ function startCategory(category) {
   currentQuestions = {};
   questionsByCategory[category].forEach(q => currentQuestions[q.id] = q);
   const firstId = questionsByCategory[category][0].id;
+  updateProgress();
   renderNode(currentQuestions[firstId]);
+}
+
+function updateProgress() {
+  const progressBar = document.getElementById('progress-bar');
+  if (progressBar) {
+    const percentage = (currentCategoryIndex / categoryOrder.length) * 100;
+    progressBar.style.width = percentage + '%';
+  }
 }
 
 function selectOption(nextId) {

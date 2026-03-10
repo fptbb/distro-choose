@@ -1,0 +1,102 @@
+[
+  {
+    "id": "custom_start",
+    "text": "How much setup and customization control do you want?",
+    "options": [
+      {
+        "text": "📦 Everything ready out of the box",
+        "next": "custom_easy"
+      },
+      {
+        "text": "🔧 Some tweaking — I like adjusting things",
+        "next": "custom_mid"
+      },
+      {
+        "text": "🏗️ Full control — I want to build my system",
+        "next": "custom_full"
+      },
+      {
+        "text": "🔒 Immutable — locked-down, atomic updates",
+        "next": "immutable"
+      }
+    ]
+  },
+  {
+    "id": "custom_easy",
+    "text": "Do you prefer opinionated defaults or a curated experience?",
+    "options": [
+      {
+        "text": "🛠️ Just give me sensible defaults",
+        "next": "preconfigured"
+      },
+      {
+        "text": "🎨 I want a thoughtfully curated, polished experience",
+        "next": "curated"
+      }
+    ]
+  },
+  {
+    "id": "custom_mid",
+    "text": "How deep do you want to go?",
+    "options": [
+      {
+        "text": "🎛️ Settings panels and config files",
+        "next": "moderate_custom"
+      },
+      {
+        "text": "⚙️ I want to tweak everything — kernel params, services, boot",
+        "next": "tweaker"
+      }
+    ]
+  },
+  {
+    "id": "custom_full",
+    "text": "How do you want to build your system?",
+    "options": [
+      {
+        "text": "🧱 Choose components and install them (like Arch)",
+        "next": "diy"
+      },
+      {
+        "text": "🛠️ Compile everything from source code",
+        "next": "from_scratch"
+      },
+      {
+        "text": "📝 Define my entire system in a config file (like NixOS)",
+        "next": "declarative"
+      }
+    ]
+  },
+  {
+    "id": "preconfigured",
+    "text": "Preconfigured"
+  },
+  {
+    "id": "curated",
+    "text": "Curated"
+  },
+  {
+    "id": "moderate_custom",
+    "text": "Moderate Customization"
+  },
+  {
+    "id": "tweaker",
+    "text": "Tweaker"
+  },
+  {
+    "id": "diy",
+    "text": "DIY"
+  },
+  {
+    "id": "from_scratch",
+    "text": "From Scratch"
+  },
+  {
+    "id": "declarative",
+    "text": "Declarative"
+  },
+  {
+    "id": "immutable",
+    "text": "Immutable / Atomic"
+  }
+]
